@@ -19,7 +19,7 @@ public class BankApp extends JFrame {
     JComboBox jComboBox = new JComboBox(comboBoxItems);
 
     public static void createAndShowGUI() {
-        JFrame frame = new JFrame("Bank Application");
+        JFrame frame = new JFrame("Bank Application--Hello, CMSC Finals--4 MORE WEEKS WHADDDUPPPPP");
         frame.setLayout(new FlowLayout());
         frame.setSize(300, 250);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
