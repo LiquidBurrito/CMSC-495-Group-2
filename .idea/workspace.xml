@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4ff3ed91-5a24-4811-a90c-e0b437546562" name="Changes" comment="IntelliJ Test: Commit and Push with my BankAccount shell (delete)">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d3ed7649-2fa7-410d-bf04-a847fa5f4043" />
+        <option name="url" value="https://github.com/LiquidBurrito/CMSC-495-Group-2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29x6BKg8btjwXzdWTHOYaPS67wB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Users/Casey/Desktop/Programming/Java/GitHub/CMSC495/CMSC495Test/CMSC-495-Group-2/Casey-Test/BankAccount&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Markdown&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\Casey\Desktop\Programming\Java\GitHub\CMSC495\CMSC495Test\CMSC-495-Group-2\Casey-Test\BankAccount" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\Casey\Desktop\Programming\Java\GitHub\CMSC495\CMSC495Test\CMSC-495-Group-2\Casey-Test" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ff3ed91-5a24-4811-a90c-e0b437546562" name="Changes" comment="" />
+      <created>1654042255110</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654042255110</updated>
+      <workItem from="1654042257311" duration="1007000" />
+      <workItem from="1654207470386" duration="48000" />
+      <workItem from="1654968284550" duration="405000" />
+      <workItem from="1654968783862" duration="770000" />
+    </task>
+    <task id="LOCAL-00001" summary="IntelliJ Test: Commit and Push with Scratch (delete)">
+      <created>1654042671314</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654042671314</updated>
+    </task>
+    <task id="LOCAL-00002" summary="IntelliJ Test: Commit and Push with Scratch (delete)">
+      <created>1654042965573</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654042965573</updated>
+    </task>
+    <task id="LOCAL-00003" summary="IntelliJ Test: Commit and Push with my BankAccount shell (delete)">
+      <created>1654968417526</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654968417526</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="IntelliJ Test: Commit and Push with Scratch (delete)" />
+    <MESSAGE value="IntelliJ Test: Commit and Push with my BankAccount shell (delete)" />
+    <option name="LAST_COMMIT_MESSAGE" value="IntelliJ Test: Commit and Push with my BankAccount shell (delete)" />
+  </component>
+</project>
