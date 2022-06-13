@@ -1,5 +1,4 @@
-public class BankAccount {
-//Sergio was here for real again
+public class BankAccount{
     int balance;
 
 
@@ -8,7 +7,7 @@ public class BankAccount {
     }
 
     public BankAccount() {
-
+//Sergio was here
     }
 
     public void Deposit() {
