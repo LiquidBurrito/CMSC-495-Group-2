@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class BankGui extends JFrame {
     LoginGui login = new LoginGui();
@@ -22,6 +23,7 @@ public class BankGui extends JFrame {
         frame.add(button2);
         frame.add(jComboBox);
         frame.setVisible(true);
+    }
 }
 
 class LoginGui extends JFrame {
@@ -31,10 +33,12 @@ class LoginGui extends JFrame {
     JButton login;
     JPasswordField password;
 
-	frame.add(passwordLabel);
-	frame.add(usernameLabel);
-    frame.add(login);
-    frame.add(username);
-    frame.add(password);
+    public LoginGui() {
+        frame.add(passwordLabel);
+        frame.add(usernameLabel);
+        frame.add(login);
+        frame.add(username);
+        frame.add(password);
+    }
 
 }
