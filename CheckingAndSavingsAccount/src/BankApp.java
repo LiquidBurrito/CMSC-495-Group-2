@@ -1,7 +1,172 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BankApp extends JFrame {
+    private JButton btnFrame1;
+    private JButton btnFrame2;
+    private JButton button1;
+    private JTextField thisIsPanel3TextField;
+    private JButton btn2Frame1;
+    private JPanel cards;
+    public BankApp(){
+        JFrame frame = new JFrame();
+
+        JPanel p1 = loginScreen();
+        p1.setBackground(Color.RED);
+        JPanel p2 = checkingScreen();
+        p2.setBackground(Color.BLUE);
+        JPanel p3 = savingsScreen();
+        p3.setBackground(Color.GREEN);
+
+
+        //Create the panel that contains the "cards".
+        cards = new JPanel(new CardLayout());
+        cards.add(p1, "Panel 1");
+        cards.add(p2, "Panel 2");
+        cards.add(p3, "Panel 3");
+
+        // Add your card container to the frame
+        Container pane = frame.getContentPane();
+        pane.add(cards, BorderLayout.CENTER);
+
+        frame.setTitle("Bank of Alaska");
+        frame.setLocation(new Point(500,300));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 500);
+        frame.setVisible(true);
+    }
+
+
+
+    public JPanel loginScreen(){
+        JLabel password1, label;
+        JTextField username;
+        JButton button;
+        JPasswordField Password;
+
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+
+        label = new JLabel ("Username");
+        label.setBounds(100,168,70,20);
+        panel.add(label);
+
+        username = new JTextField();
+        username.setBounds(100,187,193,28);
+        panel.add(username);
+
+        password1 = new JLabel("Password");
+        password1.setBounds(100,215,70,20);
+        panel.add(password1);
+
+        Password = new JPasswordField();
+        Password.setBounds(100,235,193,28);
+        panel.add(Password);
+
+        button = new JButton("Login");
+        button.setBounds(100,270,90,25);
+        button.setForeground(Color.WHITE);
+        button.setBackground((Color.BLACK));
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)(cards.getLayout());
+                cl.next(cards);
+            }
+        });
+        panel.add(button);
+
+        return panel;
+    }
+
+    public JPanel checkingScreen() {
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+
+        /*Enter your GUI code here for the checking account.
+          Make sure to add components to panel using panel.add(component)
+          All components must have the component.setBounds(x position, y position, width, height);
+        * */
+
+
+        JButton button = new JButton("Logout");
+        button.setBounds(60,360,120,25);
+        JButton button2 = new JButton("View Savings");
+        button2.setBounds(200,360,120,25);
+        button.setForeground(Color.WHITE);
+        button.setBackground((Color.BLACK));
+        button2.setForeground(Color.WHITE);
+        button2.setBackground((Color.BLACK));
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)(cards.getLayout());
+                cl.show(cards, "Panel 1");
+            }
+        });
+        panel.add(button);
+
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)(cards.getLayout());
+                cl.show(cards, "Panel 3");
+            }
+        });
+        panel.add(button2);
+        return panel;
+    }
+
+    public JPanel savingsScreen(){
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+
+        /*Enter your GUI code here for the Savings account.
+          Make sure to add components to panel using panel.add(component)
+          All components must have the component.setBounds(x position, y position, width, height);
+        * */
+
+        JButton button = new JButton("Logout");
+        button.setBounds(60,360,120,25);
+        JButton button2 = new JButton("View Checking");
+        button2.setBounds(200,360,120,25);
+        button.setForeground(Color.WHITE);
+        button.setBackground((Color.BLACK));
+        button2.setForeground(Color.WHITE);
+        button2.setBackground((Color.BLACK));
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)(cards.getLayout());
+                cl.show(cards, "Panel 1");
+            }
+        });
+        panel.add(button);
+
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout)(cards.getLayout());
+                cl.show(cards, "Panel 2");
+            }
+        });
+        panel.add(button2);
+        return panel;
+    }
+}
+
+
+
+
+
+
+
+
+
+    //Below this is commented out code from previous build
+    /*
 //    LoginGui loginGui = new LoginGui();
     Checking checking = new Checking();
     Savings savings = new Savings();
@@ -95,5 +260,5 @@ class LoginGui {
 
         pane.add(loginPanel);
     }
+*/
 
-}
