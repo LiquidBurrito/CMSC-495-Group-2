@@ -45,6 +45,10 @@ public class BankApp extends JFrame {
         pane.add(bankPanel);
     }
 
+    public void test(){
+        //this is a test from Sergio
+    }
+
     public BankApp() {
 
     }
