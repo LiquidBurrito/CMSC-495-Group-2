@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e312a55-9076-4085-aad0-b71b2af3c610" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="8e312a55-9076-4085-aad0-b71b2af3c610" name="Changes" comment="Commit and push (minimal) -- Casey" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,14 +16,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Users/Casey/Desktop/Programming/Java/GitHub/CMSC495/CMSC495Test/CMSC-495-Group-2/CheckingAndSavingsAccount"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Users/Casey/Desktop/Programming/Java/GitHub/CMSC495/CMSC495Test/CMSC-495-Group-2/CheckingAndSavingsAccount&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,5 +38,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit and push (minimal) -- Casey" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit and push (minimal) -- Casey" />
   </component>
 </project>
