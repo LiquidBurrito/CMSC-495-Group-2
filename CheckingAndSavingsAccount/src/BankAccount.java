@@ -1,13 +1,13 @@
-public class BankAccount{
-    int balance;
+public class BankAccount {
 
+    int balance;
 
     public BankAccount(int balance) {
         this.balance = balance;
     }
 
     public BankAccount() {
-//Sergio was here
+
     }
 
     public void Deposit() {
@@ -15,7 +15,6 @@ public class BankAccount{
     }
 
     public void Interest() {
-        //sergio
 
     }
 
