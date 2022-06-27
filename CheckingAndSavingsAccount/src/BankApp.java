@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Random;
 
 public class BankApp extends JFrame {
@@ -25,8 +26,18 @@ public class BankApp extends JFrame {
     private static final int MAX = 730;
     private static final int MIN = 31;
     Integer randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
+
+
+    // Admin creds input for Login Creds -- Added 26June
+    private static final String USERNAME = "Username";
+    private static final String PASSWORD = "Password";
+
+    HashMap<String, String> loginCreds = new HashMap<>();
     public BankApp(){
         JFrame frame = new JFrame();
+
+        // Add USERNAME and PASSWORD to login creds hashmap -- Added 26June
+        loginCreds.put(USERNAME, PASSWORD);
 
         JPanel p1 = loginScreen();
         p1.setBackground(Color.orange);
@@ -53,6 +64,7 @@ public class BankApp extends JFrame {
         frame.setSize(800, 400);
         frame.setVisible(true);
     }
+
     // loginScreen GUI
     public JPanel loginScreen(){
 
@@ -64,6 +76,12 @@ public class BankApp extends JFrame {
         welcomeLabel.setBounds(20, 5, 800, 50);
         welcomeLabel.setFont(new Font("Monaco", Font.BOLD, 50));
         panel.add(welcomeLabel);
+
+        // Message Label to depict login failure -- Added 26June
+        JLabel messageLabel = new JLabel("Welcome. Input your Login Credentials Please.");
+        messageLabel.setBounds(260, 75, 360, 20);
+        messageLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        panel.add(messageLabel);
 
         JLabel userLabel = new JLabel("Username");
         userLabel.setBounds(290, 100, 100, 20);
@@ -92,18 +110,73 @@ public class BankApp extends JFrame {
         loginButton.setBackground((Color.BLACK));
         panel.add(loginButton);
 
+
         // ActionListeners for loginScreen
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout)(cards.getLayout());
-                cl.next(cards);
+
+                // Various Algorithm tests to check for incorrect or correctly entered login credentials -- Added 26June
+                // Commented code left in temporarily; also see checkLoginCreds() below
+                String usern = userText.getText();
+                String passw = String.valueOf(passText.getPassword());
+
+                if((!loginCreds.containsKey(usern)) || (!loginCreds.get(usern).equals(passw))) {
+                    try {
+                        throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
+                    } catch (Exception ex) {
+                        System.out.println("An error occurred: " + ex);
+                    }
+                    messageLabel.setText("Invalid login credentials entered. Please try again.");
+                }
+                if(loginCreds.containsKey(usern)) {
+                    if(loginCreds.get(usern).equals(passw)) {
+                        CardLayout cl = (CardLayout)(cards.getLayout());
+                        cl.next(cards);
+                    }
+//                    else {
+//                        messageLabel.setText("Invalid login credentials entered. Please try again.");
+//                    }
+//                } else {
+//                    messageLabel.setText("Invalid login credentials entered. Please try again.");
+                }
+
+//                if((usern != "Username") || (passw != "Password")) {
+
+////                    try {
+////                        throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
+////                    } catch (Exception ex) {
+////                        System.out.println("An error occurred: " + ex);
+////                    }
+
+//                    System.out.println("Invalid login credentials entered. Please try again.");
+//                } else {
+//                    CardLayout cl = (CardLayout)(cards.getLayout());
+//                    cl.next(cards);
+//                }
+
+//                try {
+//                    checkLoginCreds(usern, passw);
+//                    CardLayout cl = (CardLayout)(cards.getLayout());
+//                    cl.next(cards);
+//                } catch (Exception ex) {
+//                    System.out.println("An error occurred" + ex);
+//                }
+
             }
         });
 
 
         return panel;
     }
+
+    // Test function for throwing new UnauthorizedLoginException -- 26June
+//    static void checkLoginCreds(String usern, String passw) throws UnauthorizedLoginException {
+//        if((usern != USERNAME) || (passw != PASSWORD)) {
+//            throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
+//        }
+//    }
+
     // checkingScreen GUI
     public JPanel checkingScreen() {
         JPanel panel = new JPanel();
