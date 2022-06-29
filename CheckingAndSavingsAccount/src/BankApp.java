@@ -9,19 +9,23 @@ import java.util.Random;
 
 public class BankApp extends JFrame {
 
-    private JPanel cards;
+    private final JPanel cards;
+    // ImageIcon added 25Jun22, JH
     ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("Money.png"));
     // random number generation for account balance
+    // added 25Jun22, JH
     Double min = 100.00;
     Double max = 10000.00;
     double randoDouble = (Math.random() * ((max - min) + 1)) + min;
     double roundDouble = Math.round(randoDouble * 100.0) / 100.0;
     // random number generation for savings account balance
+    // added 25Jun22, JH
     Double min2 = 2500.00;
     Double max2 = 100000.00;
     double randoDouble2 = (Math.random() * ((max2 - min2) + 1)) + min2;
     double roundDouble2 = Math.round(randoDouble2 * 100.0) / 100.0;
     // random number generation for days since last login
+    // added 25Jun22, JH
     private static final Random rando = new Random();
     private static final int MAX = 730;
     private static final int MIN = 31;
@@ -72,6 +76,7 @@ public class BankApp extends JFrame {
         panel.setLayout(null);
 
         // JLabels for loginScreen
+        // added 25Jun22, JH
         JLabel welcomeLabel = new JLabel("Welcome To SJC Credit Union");
         welcomeLabel.setBounds(20, 5, 800, 50);
         welcomeLabel.setFont(new Font("Monaco", Font.BOLD, 50));
@@ -165,8 +170,6 @@ public class BankApp extends JFrame {
 
             }
         });
-
-
         return panel;
     }
 
@@ -188,6 +191,7 @@ public class BankApp extends JFrame {
         * */
 
         // JLabels for checkingScreen
+        // added 26Jun22, JH
         Date date = new Date();
         new SimpleDateFormat();
         JLabel dTG = new JLabel("Today is " + date);
@@ -195,38 +199,45 @@ public class BankApp extends JFrame {
         dTG.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(dTG);
 
+        // added 26Jun22, JH
         JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
         lastLog.setBounds(260, 340, 300, 20);
         lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(lastLog);
 
+        // added 26Jun22, JH
         JLabel accountLabel = new JLabel("Checking Account");
         accountLabel.setBounds(20, 5, 800, 60);
         accountLabel.setFont(new Font("Monaco", Font.BOLD, 50));
         panel.add(accountLabel);
 
+        // added 26Jun22, JH
         JLabel currentBalance = new JLabel("Balance: $"+roundDouble);
         currentBalance.setBounds(435, 85, 350, 40);
         currentBalance.setFont(new Font("Monaco", Font.BOLD, 25));
         panel.add(currentBalance);
 
+        // added 26Jun22, JH
         JLabel transactionType = new JLabel("Please choose a transaction type");
         transactionType.setBounds(20, 90, 250, 20);
         transactionType.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(transactionType);
 
+        // added 26Jun22, JH
         JLabel transactionAmount = new JLabel("Enter your transaction amount");
         transactionAmount.setBounds(20, 200, 250, 20);
         transactionAmount.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(transactionAmount);
 
         // JTextFields for checkingScreen
+        // added 26Jun22, JH
         JTextField transactionInput = new JTextField("$");
         transactionInput.setBounds(20, 230, 230, 40);
         transactionInput.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(transactionInput);
 
         // JComboBox for checkingScreen
+        // added 26Jun22, JH
         String[] transactions1 = {"Deposit","Withdraw"};
         JComboBox jCB = new JComboBox(transactions1);
         jCB.setBounds(20,120,100,20);
@@ -240,6 +251,7 @@ public class BankApp extends JFrame {
         panel.add(jCB);
 
         //JButtons for checkingScreen
+        // added 27Jun22, JH
         JButton submitButton = new JButton("Submit");
         submitButton.setBounds(270, 230, 100, 40);
         submitButton.setFont(new Font("Monaco", Font.BOLD, 15));
@@ -247,6 +259,7 @@ public class BankApp extends JFrame {
         submitButton.setBackground((Color.BLACK));
         panel.add(submitButton);
 
+        // added 27Jun22, JH
         JButton goToButton = new JButton("Go To Savings");
         goToButton.setBounds(20,320,130,25);
         goToButton.setFont(new Font("Monaco", Font.BOLD, 12));
@@ -254,6 +267,7 @@ public class BankApp extends JFrame {
         goToButton.setBackground((Color.BLACK));
         panel.add(goToButton);
 
+        // added 27Jun22, JH
         JButton logoutButton = new JButton("Logout");
         logoutButton.setBounds(650,320,120,25);
         logoutButton.setFont(new Font("Monaco", Font.BOLD, 15));
@@ -286,9 +300,7 @@ public class BankApp extends JFrame {
                 cl.show(cards, "Panel 1");
             }
         });
-
         return panel;
-
     }
 
     // savingsScreen GUI
@@ -302,6 +314,7 @@ public class BankApp extends JFrame {
         * */
 
         // JLabels for savingsScreen
+        // added 27Jun22, JH
         Date date = new Date();
         new SimpleDateFormat();
         JLabel dTG = new JLabel("Today is " + date);
@@ -309,43 +322,51 @@ public class BankApp extends JFrame {
         dTG.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(dTG);
 
+        // added 27Jun22, JH
         JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
         lastLog.setBounds(260, 340, 300, 20);
         lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(lastLog);
 
+        // added 27Jun22, JH
         JLabel accountLabel = new JLabel("Savings Account");
         accountLabel.setBounds(20, 5, 800, 60);
         accountLabel.setFont(new Font("Monaco", Font.BOLD, 50));
         panel.add(accountLabel);
 
+        // added 27Jun22, JH
         JLabel currentBalance = new JLabel("Balance: $"+roundDouble2);
         currentBalance.setBounds(435, 85, 350, 40);
         currentBalance.setFont(new Font("Monaco", Font.BOLD, 25));
         panel.add(currentBalance);
 
+        // added 27Jun22, JH
         JLabel transactionType = new JLabel("Please choose a transaction type");
         transactionType.setBounds(20, 90, 250, 20);
         transactionType.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(transactionType);
 
+        // added 27Jun22, JH
         JLabel transactionAmount = new JLabel("Enter your transaction amount");
         transactionAmount.setBounds(20, 200, 250, 20);
         transactionAmount.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(transactionAmount);
 
+        // added 27Jun22, JH
         JLabel interestAccrued = new JLabel("Interest accrued since last login $TBD");
         interestAccrued.setBounds(435, 120, 350, 20);
         interestAccrued.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(interestAccrued);
 
         // JTextFields for savingsScreen
+        // added 27Jun22, JH
         JTextField transactionInput = new JTextField("$");
         transactionInput.setBounds(20, 230, 230, 40);
         transactionInput.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(transactionInput);
 
         // JComboBox for savingsScreen
+        // added 27Jun22, JH
         String[] transactions1 = {"Deposit","Withdraw"};
         JComboBox jCB = new JComboBox(transactions1);
         jCB.setBounds(20,120,100,20);
@@ -359,6 +380,7 @@ public class BankApp extends JFrame {
         panel.add(jCB);
 
         //JButtons for savingsScreen
+        // added 27Jun22, JH
         JButton submitButton = new JButton("Submit");
         submitButton.setBounds(270, 230, 100, 40);
         submitButton.setFont(new Font("Monaco", Font.BOLD, 15));
@@ -366,6 +388,7 @@ public class BankApp extends JFrame {
         submitButton.setBackground((Color.BLACK));
         panel.add(submitButton);
 
+        // added 27Jun22, JH
         JButton goToButton = new JButton("Go To Checking");
         goToButton.setBounds(20,320,130,25);
         goToButton.setFont(new Font("Monaco", Font.BOLD, 12));
@@ -373,6 +396,7 @@ public class BankApp extends JFrame {
         goToButton.setBackground((Color.BLACK));
         panel.add(goToButton);
 
+        // added 27Jun22, JH
         JButton logoutButton = new JButton("Logout");
         logoutButton.setBounds(650,320,120,25);
         logoutButton.setFont(new Font("Monaco", Font.BOLD, 15));
@@ -396,8 +420,6 @@ public class BankApp extends JFrame {
             }
         });
 
-        //return panel;
-
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -405,8 +427,6 @@ public class BankApp extends JFrame {
                 cl.show(cards, "Panel 1");
             }
         });
-
         return panel;
-
     }
 }
