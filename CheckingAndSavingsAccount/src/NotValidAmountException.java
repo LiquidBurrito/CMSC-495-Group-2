@@ -1,3 +1,5 @@
+package CheckingAndSavingsAccount.src;
+
 import java.io.IOException;
 
 public class NotValidAmountException extends Exception {

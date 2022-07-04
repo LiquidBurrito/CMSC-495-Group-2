@@ -1,3 +1,5 @@
+package CheckingAndSavingsAccount.src;
+
 public class Savings extends BankAccount {
 
     double balance;
