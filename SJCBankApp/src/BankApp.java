@@ -41,15 +41,16 @@ public class BankApp extends JFrame {
     private static final int MIN = 31;
     Integer randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
 
-    // Admin creds input for Login Creds -- Added 26June
-    private static final String USERNAME = "Username";
+    // Admin creds input for Login Creds -- added 26June, CO
+    // Updated username to allow for any case entered -- updated 05Jul22, CO
+    private static final String USERNAME = "username";
     private static final String PASSWORD = "Password";
 
     HashMap<String, String> loginCreds = new HashMap<>();
     public BankApp() {
         JFrame frame = new JFrame();
 
-        // Add USERNAME and PASSWORD to login creds hashmap -- Added 26June
+        // Add USERNAME and PASSWORD to login creds hashmap -- added 26June, CO
         loginCreds.put(USERNAME, PASSWORD);
 
         JPanel p1 = loginScreen();
@@ -91,7 +92,7 @@ public class BankApp extends JFrame {
         welcomeLabelL.setFont(new Font("Monaco", Font.BOLD, 50));
         panel.add(welcomeLabelL);
 
-        // Message Label to depict login failure -- Added 26June
+        // Message Label to depict login failure -- added 26June, CO
         JLabel messageLabelL = new JLabel("Welcome. Input your Login Credentials Please.");
         messageLabelL.setBounds(260, 75, 360, 20);
         messageLabelL.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -128,9 +129,9 @@ public class BankApp extends JFrame {
         // ActionListeners for loginScreen
         loginButton.addActionListener(e -> {
 
-            // Various Algorithm tests to check for incorrect or correctly entered login credentials -- Added 26June
-            // Commented code left in temporarily; also see checkLoginCreds() below
-            String usern = userTextL.getText();
+            // Check for incorrect or correctly entered login credentials -- added 26June, CO
+            // Updated username to allow for any case entered -- updated 05Jul22, CO
+            String usern = userTextL.getText().toLowerCase();
             String passw = String.valueOf(passTextL.getPassword());
 
             if((!loginCreds.containsKey(usern)) || (!loginCreds.get(usern).equals(passw))) {
@@ -149,46 +150,12 @@ public class BankApp extends JFrame {
                     userTextL.setText("");
                     passTextL.setText("");
                 }
-//                    else {
-//                        messageLabel.setText("Invalid login credentials entered. Please try again.");
-//                    }
-//                } else {
-//                    messageLabel.setText("Invalid login credentials entered. Please try again.");
+
             }
-
-//                if((usern != "Username") || (passw != "Password")) {
-
-////                    try {
-////                        throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
-////                    } catch (Exception ex) {
-////                        System.out.println("An error occurred: " + ex);
-////                    }
-
-//                    System.out.println("Invalid login credentials entered. Please try again.");
-//                } else {
-//                    CardLayout cl = (CardLayout)(cards.getLayout());
-//                    cl.next(cards);
-//                }
-
-//                try {
-//                    checkLoginCreds(usern, passw);
-//                    CardLayout cl = (CardLayout)(cards.getLayout());
-//                    cl.next(cards);
-//                } catch (Exception ex) {
-//                    System.out.println("An error occurred" + ex);
-//                }
-
         });
 
         return panel;
     }
-
-    // Test function for throwing new UnauthorizedLoginException -- 26June
-//    static void checkLoginCreds(String usern, String passw) throws UnauthorizedLoginException {
-//        if((usern != USERNAME) || (passw != PASSWORD)) {
-//            throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
-//        }
-//    }
 
     // JLabels that apply to both checking and savings cards
     //
@@ -342,15 +309,26 @@ public class BankApp extends JFrame {
                 depositAmount1.setText("$" + formatter.format(getDeposit) + " was added to Checking!");
             }
             if (jCBIndex == 1) {
-                double getDeposit = Double.parseDouble(transactionInput1.getText());
-                double newBalance = roundDouble1 - getDeposit;
-                BigDecimal bD = new BigDecimal(newBalance).setScale(2, RoundingMode.HALF_DOWN);
-                currentBalance1.setText("Balance: $" + formatter.format(bD.doubleValue()));
-                roundDouble1 = newBalance;
-                depositAmount1.setText("$" + formatter.format(getDeposit) + " was withdrawn from Checking!");
+                double getWithdrawal = Double.parseDouble(transactionInput1.getText());
+                double newBalance = roundDouble1 - getWithdrawal;
+
+                //if-else statement and code added to withdraw amount entered,
+                // and throw error if funds are not available in account -- added/updated 05Jul22, CO
+                if(newBalance < (0 - .1)) {
+                    try {
+                        throw new NotValidAmountException("Not enough funds in account to withdraw. Please enter a valid amount.");
+                    } catch (Exception ex) {
+                        System.out.println("An error occurred: " + ex);
+                    }
+                    depositAmount1.setText("You do not have enough funds in account to withdraw the amount entered.");
+                } else {
+                    BigDecimal bD = new BigDecimal(newBalance).setScale(2, RoundingMode.HALF_DOWN);
+                    currentBalance1.setText("Balance: $" + formatter.format(bD.doubleValue()));
+                    roundDouble1 = newBalance;
+                    depositAmount1.setText("$" + formatter.format(getWithdrawal) + " was withdrawn from Checking!");
+                }
+
             }
-
-
         });
 
         goToButton1.addActionListener(e -> {
@@ -522,6 +500,27 @@ public class BankApp extends JFrame {
                 roundDouble2 = newBalance;
                 depositAmount2.setText("$" + formatter.format(getDeposit) + " was added to Savings!");
             }
+            if (jCBIndex == 1) {
+                double getWithdrawal = Double.parseDouble(transactionInput2.getText());
+                double newBalance = roundDouble2 - getWithdrawal;
+
+                //if-else statement and code added to withdraw amount entered,
+                // and throw error if funds are not available in account -- added/updated 05Jul22, CO
+                if(newBalance < (0 - .1)) {
+                    try {
+                        throw new NotValidAmountException("Not enough funds in account to withdraw. Please enter a valid amount.");
+                    } catch (Exception ex) {
+                        System.out.println("An error occurred: " + ex);
+                    }
+                    depositAmount2.setText("You do not have enough funds in account to withdraw the amount entered.");
+                } else {
+                    BigDecimal bD = new BigDecimal(newBalance).setScale(2, RoundingMode.HALF_DOWN);
+                    currentBalance2.setText("Balance: $" + formatter.format(bD.doubleValue()));
+                    roundDouble2 = newBalance;
+                    depositAmount2.setText("$" + formatter.format(getWithdrawal) + " was withdrawn from Savings!");
+                }
+            }
+
         });
 
         goToButton2.addActionListener(e -> {

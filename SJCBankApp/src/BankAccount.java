@@ -15,12 +15,6 @@ public class BankAccount {
         account.put("Days", dayz);
     }
 
-
-
-
-
-
-
     public boolean checkUser(String usrnm){
         String s = (String) account.get("Username");
         return s.equalsIgnoreCase(usrnm);
@@ -31,20 +25,19 @@ public class BankAccount {
     }
 
 
-    public double getChecking (){
-
+    public double getChecking(){
         return checkingBalance;
     }
 
-    public double getSavings (){
+    public double getSavings(){
         return savingsBalance;
     }
 
-    public void depositCheck (Double value){
+    public void depositCheck(Double value){
         checkingBalance = checkingBalance + value;
     }
 
-    public void depositSaving (Double value){
+    public void depositSaving(Double value){
         savingsBalance = savingsBalance + value;
     }
 
@@ -55,7 +48,7 @@ public class BankAccount {
 
     }
 
-    public void withdrawSaving(Double value) {
+    public void withdrawSaving (Double value) {
         if (savingsBalance - value < 0)
             //Throw exception;
             savingsBalance = savingsBalance - value;
