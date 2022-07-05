@@ -1,7 +1,11 @@
+package CheckingAndSavingsAccount.src;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,20 +14,28 @@ import java.util.Random;
 public class BankApp extends JFrame {
 
     private final JPanel cards;
+    // added decimal formatter 02JUL22, JH
+    DecimalFormat formatter = new DecimalFormat("0.00");
     // ImageIcon added 25Jun22, JH
-    ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("Money.png"));
-    // random number generation for account balance
+    // updated pathing for ImageIcon 03JUL22, JH
+    ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("CheckingandSavingsAccount/src/Money.png"));
+
+    // random number generation for checking account balance
     // added 25Jun22, JH
-    Double min = 100.00;
+    // updated formatting 03JUL22, JH
+    double min = 100.00;
     Double max = 10000.00;
-    double randoDouble = (Math.random() * ((max - min) + 1)) + min;
-    double roundDouble = Math.round(randoDouble * 100.0) / 100.0;
+    double randoDouble1 = (Math.random() * ((max - min) + 1)) + min;
+    double roundDouble1 = Double.parseDouble(formatter.format(Math.round(randoDouble1 * 100.0) / 100.0));
+
     // random number generation for savings account balance
     // added 25Jun22, JH
+    // updated formatting 03JUL22, JH
     Double min2 = 2500.00;
     Double max2 = 100000.00;
     double randoDouble2 = (Math.random() * ((max2 - min2) + 1)) + min2;
-    double roundDouble2 = Math.round(randoDouble2 * 100.0) / 100.0;
+    double roundDouble2 = Double.parseDouble(formatter.format(Math.round(randoDouble2 * 100.0) / 100.0));
+
     // random number generation for days since last login
     // added 25Jun22, JH
     private static final Random rando = new Random();
@@ -31,13 +43,12 @@ public class BankApp extends JFrame {
     private static final int MIN = 31;
     Integer randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
 
-
     // Admin creds input for Login Creds -- Added 26June
     private static final String USERNAME = "Username";
     private static final String PASSWORD = "Password";
 
     HashMap<String, String> loginCreds = new HashMap<>();
-    public BankApp(){
+    public BankApp() {
         JFrame frame = new JFrame();
 
         // Add USERNAME and PASSWORD to login creds hashmap -- Added 26June
@@ -70,42 +81,42 @@ public class BankApp extends JFrame {
     }
 
     // loginScreen GUI
-    public JPanel loginScreen(){
+    public JPanel loginScreen() {
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
         // JLabels for loginScreen
         // added 25Jun22, JH
-        JLabel welcomeLabel = new JLabel("Welcome To SJC Credit Union");
-        welcomeLabel.setBounds(20, 5, 800, 50);
-        welcomeLabel.setFont(new Font("Monaco", Font.BOLD, 50));
-        panel.add(welcomeLabel);
+        JLabel welcomeLabelL = new JLabel("Welcome To SJC Credit Union");
+        welcomeLabelL.setBounds(20, 5, 800, 50);
+        welcomeLabelL.setFont(new Font("Monaco", Font.BOLD, 50));
+        panel.add(welcomeLabelL);
 
         // Message Label to depict login failure -- Added 26June
-        JLabel messageLabel = new JLabel("Welcome. Input your Login Credentials Please.");
-        messageLabel.setBounds(260, 75, 360, 20);
-        messageLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        panel.add(messageLabel);
+        JLabel messageLabelL = new JLabel("Welcome. Input your Login Credentials Please.");
+        messageLabelL.setBounds(260, 75, 360, 20);
+        messageLabelL.setFont(new Font("Arial", Font.PLAIN, 15));
+        panel.add(messageLabelL);
 
-        JLabel userLabel = new JLabel("Username");
-        userLabel.setBounds(290, 100, 100, 20);
-        userLabel.setFont(new Font("Monaco",Font.BOLD, 15));
-        panel.add(userLabel);
+        JLabel userLabelL = new JLabel("Username");
+        userLabelL.setBounds(290, 100, 100, 20);
+        userLabelL.setFont(new Font("Monaco",Font.BOLD, 15));
+        panel.add(userLabelL);
 
-        JLabel passLabel = new JLabel("Password");
-        passLabel.setBounds(290, 160, 100, 20);
-        passLabel.setFont(new Font("Monaco",Font.BOLD, 15));
-        panel.add(passLabel);
+        JLabel passLabelL = new JLabel("Password");
+        passLabelL.setBounds(290, 160, 100, 20);
+        passLabelL.setFont(new Font("Monaco",Font.BOLD, 15));
+        panel.add(passLabelL);
 
         // JFields for loginScreen
-        JTextField userText = new JTextField(20);
-        userText.setBounds(290,125,200, 25);
-        panel.add(userText);
+        JTextField userTextL = new JTextField(20);
+        userTextL.setBounds(290,125,200, 25);
+        panel.add(userTextL);
 
-        JPasswordField passText = new JPasswordField();
-        passText.setBounds(290,185,200,25);
-        panel.add(passText);
+        JPasswordField passTextL = new JPasswordField();
+        passTextL.setBounds(290,185,200,25);
+        panel.add(passTextL);
 
         // JButtons for loginScreen
         JButton loginButton = new JButton("Login");
@@ -117,34 +128,35 @@ public class BankApp extends JFrame {
 
 
         // ActionListeners for loginScreen
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        loginButton.addActionListener(e -> {
 
-                // Various Algorithm tests to check for incorrect or correctly entered login credentials -- Added 26June
-                // Commented code left in temporarily; also see checkLoginCreds() below
-                String usern = userText.getText();
-                String passw = String.valueOf(passText.getPassword());
+            // Various Algorithm tests to check for incorrect or correctly entered login credentials -- Added 26June
+            // Commented code left in temporarily; also see checkLoginCreds() below
+            String usern = userTextL.getText();
+            String passw = String.valueOf(passTextL.getPassword());
 
-                if((!loginCreds.containsKey(usern)) || (!loginCreds.get(usern).equals(passw))) {
-                    try {
-                        throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
-                    } catch (Exception ex) {
-                        System.out.println("An error occurred: " + ex);
-                    }
-                    messageLabel.setText("Invalid login credentials entered. Please try again.");
+            if((!loginCreds.containsKey(usern)) || (!loginCreds.get(usern).equals(passw))) {
+                try {
+                    throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
+                } catch (Exception ex) {
+                    System.out.println("An error occurred: " + ex);
                 }
-                if(loginCreds.containsKey(usern)) {
-                    if(loginCreds.get(usern).equals(passw)) {
-                        CardLayout cl = (CardLayout)(cards.getLayout());
-                        cl.next(cards);
-                    }
+                messageLabelL.setText("Invalid login credentials entered. Please try again.");
+            }
+            if(loginCreds.containsKey(usern)) {
+                if(loginCreds.get(usern).equals(passw)) {
+                    CardLayout cl = (CardLayout)(cards.getLayout());
+                    cl.next(cards);
+                    // added these 2 lines to clear text fields after login 3JUL, JH
+                    userTextL.setText("");
+                    passTextL.setText("");
+                }
 //                    else {
 //                        messageLabel.setText("Invalid login credentials entered. Please try again.");
 //                    }
 //                } else {
 //                    messageLabel.setText("Invalid login credentials entered. Please try again.");
-                }
+            }
 
 //                if((usern != "Username") || (passw != "Password")) {
 
@@ -168,8 +180,8 @@ public class BankApp extends JFrame {
 //                    System.out.println("An error occurred" + ex);
 //                }
 
-            }
         });
+
         return panel;
     }
 
@@ -179,6 +191,9 @@ public class BankApp extends JFrame {
 //            throw new UnauthorizedLoginException("Invalid login credentials entered. Please try again.");
 //        }
 //    }
+
+    // JLabels that apply to both checking and savings cards
+    //
 
     // checkingScreen GUI
     public JPanel checkingScreen() {
@@ -206,99 +221,151 @@ public class BankApp extends JFrame {
         panel.add(lastLog);
 
         // added 26Jun22, JH
-        JLabel accountLabel = new JLabel("Checking Account");
-        accountLabel.setBounds(20, 5, 800, 60);
-        accountLabel.setFont(new Font("Monaco", Font.BOLD, 50));
-        panel.add(accountLabel);
+        JLabel accountLabel1 = new JLabel("Checking Account");
+        accountLabel1.setBounds(20, 5, 800, 60);
+        accountLabel1.setFont(new Font("Monaco", Font.BOLD, 50));
+        panel.add(accountLabel1);
 
         // added 26Jun22, JH
-        JLabel currentBalance = new JLabel("Balance: $"+roundDouble);
-        currentBalance.setBounds(435, 85, 350, 40);
-        currentBalance.setFont(new Font("Monaco", Font.BOLD, 25));
-        panel.add(currentBalance);
+        JLabel currentBalance1 = new JLabel("Balance: $" + roundDouble1);
+        currentBalance1.setBounds(435, 85, 350, 40);
+        currentBalance1.setFont(new Font("Monaco", Font.BOLD, 25));
+        panel.add(currentBalance1);
 
         // added 26Jun22, JH
-        JLabel transactionType = new JLabel("Please choose a transaction type");
-        transactionType.setBounds(20, 90, 250, 20);
-        transactionType.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(transactionType);
+        JLabel transactionType1 = new JLabel("Please choose a transaction type");
+        transactionType1.setBounds(20, 90, 250, 20);
+        transactionType1.setFont(new Font("Monaco", Font.BOLD, 15));
+        panel.add(transactionType1);
 
         // added 26Jun22, JH
-        JLabel transactionAmount = new JLabel("Enter your transaction amount");
-        transactionAmount.setBounds(20, 200, 250, 20);
-        transactionAmount.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(transactionAmount);
+        JLabel transactionAmount1 = new JLabel("Enter your transaction amount");
+        transactionAmount1.setBounds(20, 200, 250, 20);
+        transactionAmount1.setFont(new Font("Monaco", Font.BOLD, 15));
+        panel.add(transactionAmount1);
+
+        // added 3JUL22, JH
+        JLabel depositAmount1 = new JLabel("");
+        depositAmount1.setBounds(20, 180, 800, 40);
+        depositAmount1.setFont(new Font("Monaco", Font.BOLD, 20));
+        panel.add(depositAmount1);
 
         // JTextFields for checkingScreen
         // added 26Jun22, JH
-        JTextField transactionInput = new JTextField("$");
-        transactionInput.setBounds(20, 230, 230, 40);
-        transactionInput.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(transactionInput);
+        JTextField transactionInput1 = new JTextField();
+        transactionInput1.setBounds(20, 230, 230, 40);
+        transactionInput1.setFont(new Font("Monaco", Font.BOLD, 15));
+        panel.add(transactionInput1);
+
+        // added KeyListener to ensure only numbers and decimals are input into JTextField
+        // any that is not 0-9 or "." gives error
+        // added 03JUL22, JH
+        transactionInput1.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyChar() == '.') {
+                    transactionInput1.setEditable(true);
+                    transactionAmount1.setText("");
+                } else {
+                    transactionInput1.setEditable(false);
+                    transactionInput1.setText("Numbers Only! Click to Clear!");
+                }
+            }
+        });
+
+        // added MouseListeners 03JUL22, JH
+        transactionInput1.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                transactionInput1.setText("");
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
 
         // JComboBox for checkingScreen
         // added 26Jun22, JH
         String[] transactions1 = {"Deposit","Withdraw"};
-        JComboBox jCB = new JComboBox(transactions1);
-        jCB.setBounds(20,120,100,20);
-        jCB.setRenderer(new DefaultListCellRenderer() {
+        JComboBox jCB1 = new JComboBox(transactions1);
+        jCB1.setBounds(20,120,100,20);
+        jCB1.setRenderer(new DefaultListCellRenderer() {
             public void paint(Graphics g) {
                 setBackground(Color.green);
                 setForeground(Color.black);
                 super.paint(g);
             }
         });
-        panel.add(jCB);
+        panel.add(jCB1);
 
         //JButtons for checkingScreen
         // added 27Jun22, JH
-        JButton submitButton = new JButton("Submit");
-        submitButton.setBounds(270, 230, 100, 40);
-        submitButton.setFont(new Font("Monaco", Font.BOLD, 15));
-        submitButton.setForeground(Color.WHITE);
-        submitButton.setBackground((Color.BLACK));
-        panel.add(submitButton);
+        JButton submitButton1 = new JButton("Submit");
+        submitButton1.setBounds(270, 230, 100, 40);
+        submitButton1.setFont(new Font("Monaco", Font.BOLD, 15));
+        submitButton1.setForeground(Color.WHITE);
+        submitButton1.setBackground((Color.BLACK));
+        panel.add(submitButton1);
 
         // added 27Jun22, JH
-        JButton goToButton = new JButton("Go To Savings");
-        goToButton.setBounds(20,320,130,25);
-        goToButton.setFont(new Font("Monaco", Font.BOLD, 12));
-        goToButton.setForeground(Color.WHITE);
-        goToButton.setBackground((Color.BLACK));
-        panel.add(goToButton);
+        JButton goToButton1 = new JButton("Go To Savings");
+        goToButton1.setBounds(20,320,130,25);
+        goToButton1.setFont(new Font("Monaco", Font.BOLD, 12));
+        goToButton1.setForeground(Color.WHITE);
+        goToButton1.setBackground((Color.BLACK));
+        panel.add(goToButton1);
 
         // added 27Jun22, JH
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.setBounds(650,320,120,25);
-        logoutButton.setFont(new Font("Monaco", Font.BOLD, 15));
-        logoutButton.setForeground(Color.WHITE);
-        logoutButton.setBackground((Color.BLACK));
-        panel.add(logoutButton);
+        JButton logoutButton1 = new JButton("Logout");
+        logoutButton1.setBounds(650,320,120,25);
+        logoutButton1.setFont(new Font("Monaco", Font.BOLD, 15));
+        logoutButton1.setForeground(Color.WHITE);
+        logoutButton1.setBackground((Color.BLACK));
+        panel.add(logoutButton1);
 
         // actionListeners for checkingScreen
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+        // updated 02JUL22, JH
+        submitButton1.addActionListener(e -> {
+            int jCBIndex = jCB1.getSelectedIndex();
+            if (jCBIndex == 0) {
+                double getDeposit = Double.parseDouble(transactionInput1.getText());
+                double newBalance = roundDouble1 + getDeposit;
+                BigDecimal bD = new BigDecimal(newBalance).setScale(2, RoundingMode.HALF_DOWN);
+                currentBalance1.setText("Balance: $" + formatter.format(bD.doubleValue()));
+                roundDouble1 = newBalance;
+                depositAmount1.setText("$" + formatter.format(getDeposit) + " was added to Checking!");
             }
+            if (jCBIndex == 1) {
+                double getDeposit = Double.parseDouble(transactionInput1.getText());
+                double newBalance = roundDouble1 - getDeposit;
+                BigDecimal bD = new BigDecimal(newBalance).setScale(2, RoundingMode.HALF_DOWN);
+                currentBalance1.setText("Balance: $" + formatter.format(bD.doubleValue()));
+                roundDouble1 = newBalance;
+                depositAmount1.setText("$" + formatter.format(getDeposit) + " was withdrawn from Checking!");
+            }
+
+
         });
 
-        goToButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout)(cards.getLayout());
-                cl.show(cards, "Panel 3");
-            }
+        goToButton1.addActionListener(e -> {
+            CardLayout cl = (CardLayout)(cards.getLayout());
+            cl.show(cards, "Panel 3");
         });
 
         //return panel;
 
-        logoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout)(cards.getLayout());
-                cl.show(cards, "Panel 1");
-            }
+        logoutButton1.addActionListener(e -> {
+            CardLayout cl = (CardLayout)(cards.getLayout());
+            cl.show(cards, "Panel 1");
+
         });
         return panel;
     }
@@ -329,103 +396,144 @@ public class BankApp extends JFrame {
         panel.add(lastLog);
 
         // added 27Jun22, JH
-        JLabel accountLabel = new JLabel("Savings Account");
-        accountLabel.setBounds(20, 5, 800, 60);
-        accountLabel.setFont(new Font("Monaco", Font.BOLD, 50));
-        panel.add(accountLabel);
+        JLabel accountLabel2 = new JLabel("Savings Account");
+        accountLabel2.setBounds(20, 5, 800, 60);
+        accountLabel2.setFont(new Font("Monaco", Font.BOLD, 50));
+        panel.add(accountLabel2);
 
         // added 27Jun22, JH
-        JLabel currentBalance = new JLabel("Balance: $"+roundDouble2);
-        currentBalance.setBounds(435, 85, 350, 40);
-        currentBalance.setFont(new Font("Monaco", Font.BOLD, 25));
-        panel.add(currentBalance);
+        JLabel currentBalance2 = new JLabel("Balance: $"+roundDouble2);
+        currentBalance2.setBounds(435, 85, 350, 40);
+        currentBalance2.setFont(new Font("Monaco", Font.BOLD, 25));
+        panel.add(currentBalance2);
 
         // added 27Jun22, JH
-        JLabel transactionType = new JLabel("Please choose a transaction type");
-        transactionType.setBounds(20, 90, 250, 20);
-        transactionType.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(transactionType);
+        JLabel transactionType2 = new JLabel("Please choose a transaction type");
+        transactionType2.setBounds(20, 90, 250, 20);
+        transactionType2.setFont(new Font("Monaco", Font.BOLD, 15));
+        panel.add(transactionType2);
 
         // added 27Jun22, JH
-        JLabel transactionAmount = new JLabel("Enter your transaction amount");
-        transactionAmount.setBounds(20, 200, 250, 20);
-        transactionAmount.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(transactionAmount);
+        JLabel transactionAmount2 = new JLabel("Enter your transaction amount");
+        transactionAmount2.setBounds(20, 200, 250, 20);
+        transactionAmount2.setFont(new Font("Monaco", Font.BOLD, 15));
+        panel.add(transactionAmount2);
 
         // added 27Jun22, JH
-        JLabel interestAccrued = new JLabel("Interest accrued since last login $TBD");
-        interestAccrued.setBounds(435, 120, 350, 20);
-        interestAccrued.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(interestAccrued);
+        JLabel interestAccrued2 = new JLabel("Interest accrued since last login $TBD");
+        interestAccrued2.setBounds(435, 120, 350, 20);
+        interestAccrued2.setFont(new Font("Monaco", Font.BOLD, 15));
+        panel.add(interestAccrued2);
+
+        // added 3JUL22, JH
+        JLabel depositAmount2 = new JLabel("");
+        depositAmount2.setBounds(20, 180, 800, 40);
+        depositAmount2.setFont(new Font("Monaco", Font.BOLD, 20));
+        panel.add(depositAmount2);
 
         // JTextFields for savingsScreen
         // added 27Jun22, JH
-        JTextField transactionInput = new JTextField("$");
-        transactionInput.setBounds(20, 230, 230, 40);
-        transactionInput.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(transactionInput);
+        JTextField transactionInput2 = new JTextField("$");
+        transactionInput2.setBounds(20, 230, 230, 40);
+        transactionInput2.setFont(new Font("Monaco", Font.BOLD, 15));
+        panel.add(transactionInput2);
+
+        // added KeyListener to ensure only numbers and decimals are input into JTextField
+        // any that is not 0-9 or "." gives error
+        // added 03JUL22, JH
+        transactionInput2.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyChar() == '.') {
+                    transactionInput2.setEditable(true);
+                    transactionAmount2.setText("");
+                } else {
+                    transactionInput2.setEditable(false);
+                    transactionInput2.setText("Numbers Only! Click to Clear!");
+                }
+            }
+        });
+
+        // added MouseListeners 03JUL22, JH
+        transactionInput2.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                transactionInput2.setText("");
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
 
         // JComboBox for savingsScreen
         // added 27Jun22, JH
-        String[] transactions1 = {"Deposit","Withdraw"};
-        JComboBox jCB = new JComboBox(transactions1);
-        jCB.setBounds(20,120,100,20);
-        jCB.setRenderer(new DefaultListCellRenderer() {
+        String[] transactions2 = {"Deposit","Withdraw"};
+        JComboBox jCB2 = new JComboBox(transactions2);
+        jCB2.setBounds(20,120,100,20);
+        jCB2.setRenderer(new DefaultListCellRenderer() {
             public void paint(Graphics g) {
                 setBackground(Color.green);
                 setForeground(Color.black);
                 super.paint(g);
             }
         });
-        panel.add(jCB);
+        panel.add(jCB2);
 
         //JButtons for savingsScreen
         // added 27Jun22, JH
-        JButton submitButton = new JButton("Submit");
-        submitButton.setBounds(270, 230, 100, 40);
-        submitButton.setFont(new Font("Monaco", Font.BOLD, 15));
-        submitButton.setForeground(Color.WHITE);
-        submitButton.setBackground((Color.BLACK));
-        panel.add(submitButton);
+        JButton submitButton2 = new JButton("Submit");
+        submitButton2.setBounds(270, 230, 100, 40);
+        submitButton2.setFont(new Font("Monaco", Font.BOLD, 15));
+        submitButton2.setForeground(Color.WHITE);
+        submitButton2.setBackground((Color.BLACK));
+        panel.add(submitButton2);
 
         // added 27Jun22, JH
-        JButton goToButton = new JButton("Go To Checking");
-        goToButton.setBounds(20,320,130,25);
-        goToButton.setFont(new Font("Monaco", Font.BOLD, 12));
-        goToButton.setForeground(Color.WHITE);
-        goToButton.setBackground((Color.BLACK));
-        panel.add(goToButton);
+        JButton goToButton2 = new JButton("Go To Checking");
+        goToButton2.setBounds(20,320,130,25);
+        goToButton2.setFont(new Font("Monaco", Font.BOLD, 12));
+        goToButton2.setForeground(Color.WHITE);
+        goToButton2.setBackground((Color.BLACK));
+        panel.add(goToButton2);
 
         // added 27Jun22, JH
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.setBounds(650,320,120,25);
-        logoutButton.setFont(new Font("Monaco", Font.BOLD, 15));
-        logoutButton.setForeground(Color.WHITE);
-        logoutButton.setBackground((Color.BLACK));
-        panel.add(logoutButton);
+        JButton logoutButton2 = new JButton("Logout");
+        logoutButton2.setBounds(650,320,120,25);
+        logoutButton2.setFont(new Font("Monaco", Font.BOLD, 15));
+        logoutButton2.setForeground(Color.WHITE);
+        logoutButton2.setBackground((Color.BLACK));
+        panel.add(logoutButton2);
 
         // actionListeners for savingsScreen
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+        // updated 02JUL22, JH
+        submitButton2.addActionListener(e -> {
+            int jCBIndex = jCB2.getSelectedIndex();
+            if (jCBIndex == 0) {
+                double getDeposit = Double.parseDouble(transactionInput2.getText());
+                double newBalance = roundDouble2 + getDeposit;
+                BigDecimal bD = new BigDecimal(newBalance).setScale(2, RoundingMode.HALF_DOWN);
+                currentBalance2.setText("Balance: $" + formatter.format(bD.doubleValue()));
+                roundDouble2 = newBalance;
+                depositAmount2.setText("$" + formatter.format(getDeposit) + " was added to Savings!");
             }
         });
 
-        goToButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout)(cards.getLayout());
-                cl.show(cards, "Panel 2");
-            }
+        goToButton2.addActionListener(e -> {
+            CardLayout cl = (CardLayout)(cards.getLayout());
+            cl.show(cards, "Panel 2");
         });
 
-        logoutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout)(cards.getLayout());
-                cl.show(cards, "Panel 1");
-            }
+        logoutButton2.addActionListener(e -> {
+            CardLayout cl = (CardLayout)(cards.getLayout());
+            cl.show(cards, "Panel 1");
         });
         return panel;
     }

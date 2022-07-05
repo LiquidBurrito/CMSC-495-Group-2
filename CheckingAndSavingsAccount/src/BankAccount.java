@@ -1,4 +1,7 @@
-import java.util.*;
+package CheckingAndSavingsAccount.src;
+
+import java.util.HashMap;
+import java.util.Map;
 public class BankAccount {
 
     private Map<String, Object>account = new HashMap<>();
@@ -14,6 +17,12 @@ public class BankAccount {
         account.put("Days", dayz);
     }
 
+
+
+
+
+
+
     public boolean checkUser(String usrnm){
         String s = (String) account.get("Username");
         return s.equalsIgnoreCase(usrnm);
@@ -25,6 +34,7 @@ public class BankAccount {
 
 
     public double getChecking (){
+
         return checkingBalance;
     }
 

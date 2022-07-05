@@ -1,3 +1,5 @@
+package CheckingAndSavingsAccount.src;
+
 public class Checking extends BankAccount {
 
     double balance;
@@ -8,7 +10,14 @@ public class Checking extends BankAccount {
     }
 
     public double deposit(double addBalance) {
+        //if jcb
+
         return balance += addBalance;
+    }
+
+    public static boolean isDouble(String str) {
+
+        return false;
     }
 
     public double withdraw(double subBalance) {

@@ -1,0 +1,730 @@
+Index: CheckingAndSavingsAccount/src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\r\n    public static void main(String[] args) {\r\n        BankApp MyMainForm = new BankApp();\r\n        MyMainForm.setVisible(true);\r\n\r\n        //BankApp.createAndShowGUI();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CheckingAndSavingsAccount/src/Main.java b/CheckingAndSavingsAccount/src/Main.java
+--- a/CheckingAndSavingsAccount/src/Main.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/CheckingAndSavingsAccount/src/Main.java	(date 1656871848636)
+@@ -1,3 +1,5 @@
++package CheckingAndSavingsAccount.src;
++
+ public class Main {
+     public static void main(String[] args) {
+         BankApp MyMainForm = new BankApp();
+Index: Casey-Test/.idea/Casey-Test.iml
+===================================================================
+diff --git a/Casey-Test/.idea/Casey-Test.iml b/Casey-Test/.idea/Casey-Test.iml
+deleted file mode 100644
+--- a/Casey-Test/.idea/Casey-Test.iml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,9 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: PseudoBankingApp/PseudoBankingApp.iml
+===================================================================
+diff --git a/PseudoBankingApp/PseudoBankingApp.iml b/PseudoBankingApp/PseudoBankingApp.iml
+deleted file mode 100644
+--- a/PseudoBankingApp/PseudoBankingApp.iml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+-    </content>
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: PseudoBankingApp/src/OverdraftException.java
+===================================================================
+diff --git a/PseudoBankingApp/src/OverdraftException.java b/PseudoBankingApp/src/OverdraftException.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/OverdraftException.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,7 +0,0 @@
+-import java.io.IOException;
+-
+-public class OverdraftException extends IOException {
+-    OverdraftException(String message) {
+-        super(message);
+-    }
+-}
+Index: PseudoBankingApp/src/BankGui.java
+===================================================================
+diff --git a/PseudoBankingApp/src/BankGui.java b/PseudoBankingApp/src/BankGui.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/BankGui.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,44 +0,0 @@
+-import javax.swing.*;
+-import java.awt.*;
+-
+-public class BankGui extends JFrame {
+-    LoginGui login = new LoginGui();
+-    Checking checking = new Checking();
+-    Savings savings = new Savings();
+-
+-    JFrame frame = new JFrame("Bank Application");
+-    JLabel label1 = new JLabel("Label 1");
+-    JLabel label2 = new JLabel("Label 2");
+-    JButton button1 = new JButton("Button 1");
+-    JButton button2 = new JButton("Button 2");
+-    JComboBox jComboBox = new JComboBox();
+-
+-    public BankGui() {
+-        frame.setSize(420, 300);
+-        frame.setLayout(new FlowLayout());
+-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+-        frame.add(label1);
+-        frame.add(label2);
+-        frame.add(button1);
+-        frame.add(button2);
+-        frame.add(jComboBox);
+-        frame.setVisible(true);
+-    }
+-}
+-
+-class LoginGui extends JFrame {
+-    JFrame frame = new JFrame();
+-    JLabel passwordLabel, usernameLabel;
+-    JTextField username;
+-    JButton login;
+-    JPasswordField password;
+-
+-    public LoginGui() {
+-        frame.add(passwordLabel);
+-        frame.add(usernameLabel);
+-        frame.add(login);
+-        frame.add(username);
+-        frame.add(password);
+-    }
+-
+-}
+Index: PseudoBankingApp/.idea/misc.xml
+===================================================================
+diff --git a/PseudoBankingApp/.idea/misc.xml b/PseudoBankingApp/.idea/misc.xml
+deleted file mode 100644
+--- a/PseudoBankingApp/.idea/misc.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Corretto-11" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/out" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: PseudoBankingApp/src/Main.java
+===================================================================
+diff --git a/PseudoBankingApp/src/Main.java b/PseudoBankingApp/src/Main.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/Main.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,8 +0,0 @@
+-public class Main {
+-    public static void main(String[] args) {
+-        BankGui bank = new BankGui();
+-    }
+-
+-    //Testing new project commit
+-    //test test test
+-}
+Index: Casey-Test/.idea/modules.xml
+===================================================================
+diff --git a/Casey-Test/.idea/modules.xml b/Casey-Test/.idea/modules.xml
+deleted file mode 100644
+--- a/Casey-Test/.idea/modules.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/Casey-Test.iml" filepath="$PROJECT_DIR$/.idea/Casey-Test.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: Casey-Test/.idea/misc.xml
+===================================================================
+diff --git a/Casey-Test/.idea/misc.xml b/Casey-Test/.idea/misc.xml
+deleted file mode 100644
+--- a/Casey-Test/.idea/misc.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectRootManager">
+-    <output url="file://$PROJECT_DIR$/out" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: PseudoBankingApp/.idea/.gitignore
+===================================================================
+diff --git a/PseudoBankingApp/.idea/.gitignore b/PseudoBankingApp/.idea/.gitignore
+deleted file mode 100644
+--- a/PseudoBankingApp/.idea/.gitignore	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,8 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+-# Editor-based HTTP Client requests
+-/httpRequests/
+-# Datasource local storage ignored files
+-/dataSources/
+-/dataSources.local.xml
+Index: PseudoBankingApp/src/User.java
+===================================================================
+diff --git a/PseudoBankingApp/src/User.java b/PseudoBankingApp/src/User.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/User.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,23 +0,0 @@
+-import java.util.HashMap;
+-
+-public class User {
+-    HashMap<String, Object> account = new HashMap<>();
+-
+-    public User(){
+-        account.put("Username", "admin");
+-        account.put("Password", "password");
+-        new Checking check = new Checking();
+-        new Savings save = new Savings();
+-        account.put(“Checking”,check);
+-        account.put(“Savings”, save);
+-    }
+-
+-    public boolean checkUser(String usrnm){
+-        return accountData.get(“Username”).equalsIgnoreCase(usrnm);
+-    }
+-
+-    public boolean checkPass(String pass){
+-        return accountData.get(“Password”).equals(pass);
+-    }
+-
+-}
+Index: PseudoBankingApp/.idea/workspace.xml
+===================================================================
+diff --git a/PseudoBankingApp/.idea/workspace.xml b/PseudoBankingApp/.idea/workspace.xml
+deleted file mode 100644
+--- a/PseudoBankingApp/.idea/workspace.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,86 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ChangeListManager">
+-    <list default="true" id="997c882c-aea5-467d-bfe3-c25e86cbadae" name="Changes" comment="commit and push" />
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+-  </component>
+-  <component name="MarkdownSettingsMigration">
+-    <option name="stateVersion" value="1" />
+-  </component>
+-  <component name="ProjectId" id="2B01a0XbAvdBC0ctn6zZlVayWLl" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "D:/Users/Casey/Desktop/Programming/Java/GitHub/CMSC495/CMSC495Test/CMSC-495-Group-2/CheckingAndSavingsAccount"
+-  }
+-}]]></component>
+-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="997c882c-aea5-467d-bfe3-c25e86cbadae" name="Changes" comment="" />
+-      <created>1656028247526</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1656028247526</updated>
+-      <workItem from="1656028248660" duration="1732000" />
+-      <workItem from="1656031447776" duration="17000" />
+-      <workItem from="1656031527954" duration="18000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="commit and push">
+-      <created>1656028271263</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1656028271263</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="commit and push">
+-      <created>1656028433842</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1656028433842</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="commit and push">
+-      <created>1656028586044</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1656028586044</updated>
+-    </task>
+-    <option name="localTasksCounter" value="4" />
+-    <servers />
+-  </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="Vcs.Log.Tabs.Properties">
+-    <option name="TAB_STATES">
+-      <map>
+-        <entry key="MAIN">
+-          <value>
+-            <State />
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="commit and push" />
+-    <option name="LAST_COMMIT_MESSAGE" value="commit and push" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: PseudoBankingApp/src/Savings.java
+===================================================================
+diff --git a/PseudoBankingApp/src/Savings.java b/PseudoBankingApp/src/Savings.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/Savings.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,20 +0,0 @@
+-public class Savings extends BankAccount {
+-    int days;
+-    public Savings(){
+-        days = 0;
+-        super();
+-    }
+-
+-    public double interestAccrued() {
+-        return savings = savings * 0.015;
+-    }
+-
+-    public void calcInterest() {
+-        if (days > 30) {
+-            this.deposit(interestAccrued);
+-        }
+-
+-
+-    }
+-
+-}
+Index: PseudoBankingApp/src/LoginException.java
+===================================================================
+diff --git a/PseudoBankingApp/src/LoginException.java b/PseudoBankingApp/src/LoginException.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/LoginException.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,7 +0,0 @@
+-import java.io.IOException;
+-
+-public class LoginException extends IOException {
+-    LoginException(String message) {
+-        super(message);
+-    }
+-}
+Index: Casey-Test/.idea/vcs.xml
+===================================================================
+diff --git a/Casey-Test/.idea/vcs.xml b/Casey-Test/.idea/vcs.xml
+deleted file mode 100644
+--- a/Casey-Test/.idea/vcs.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: PseudoBankingApp/src/BankAccount.java
+===================================================================
+diff --git a/PseudoBankingApp/src/BankAccount.java b/PseudoBankingApp/src/BankAccount.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/BankAccount.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,27 +0,0 @@
+-public class BankAccount {
+-    Double balance;
+-
+-    public BankAccount() {
+-        balance = 0.0;
+-    }
+-
+-    public double getBalance() {
+-        return balance;
+-    }
+-
+-    public void deposit(Double value) {
+-        balance = balance + value;
+-    }
+-
+-    public void withdrawChecking(Double value) {
+-        if (balance - value < 0) {
+-            Throw exception;
+-            balance = balance - value;
+-        }
+-
+-        public int getDays () {
+-            return accountData.get(“Days”);
+-        }
+-
+-    }
+-}
+Index: PseudoBankingApp/src/Checking.java
+===================================================================
+diff --git a/PseudoBankingApp/src/Checking.java b/PseudoBankingApp/src/Checking.java
+deleted file mode 100644
+--- a/PseudoBankingApp/src/Checking.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ /dev/null	(revision cf94761eb559ee84c2a485630662a61eb186b797)
+@@ -1,6 +0,0 @@
+-public class Checking extends BankAccount {
+-    public Checking(){
+-        super();
+-    }
+-
+-}
+Index: CheckingAndSavingsAccount/src/BankAccount.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.*;\r\npublic class BankAccount {\r\n\r\n    private Map<String, Object>account = new HashMap<>();\r\n    private double checkingBalance = 0;\r\n    private double savingsBalance = 0;\r\n    private int dayz = 0;\r\n\r\n    public BankAccount(){\r\n        account.put(\"Username\", \"admin\");\r\n        account.put(\"Password\", \"password\");\r\n        account.put(\"Checking\", checkingBalance);\r\n        account.put(\"Savings\", savingsBalance);\r\n        account.put(\"Days\", dayz);\r\n    }\r\n\r\n    public boolean checkUser(String usrnm){\r\n        String s = (String) account.get(\"Username\");\r\n        return s.equalsIgnoreCase(usrnm);\r\n    }\r\n\r\n    public boolean checkPass(String pass){\r\n        return account.get(\"Password\").equals(pass);\r\n    }\r\n\r\n\r\n    public double getChecking (){\r\n        return checkingBalance;\r\n    }\r\n\r\n    public double getSavings (){\r\n        return savingsBalance;\r\n    }\r\n\r\n    public void depositCheck (Double value){\r\n        checkingBalance = checkingBalance + value;\r\n    }\r\n\r\n    public void depositSaving (Double value){\r\n        savingsBalance = savingsBalance + value;\r\n    }\r\n\r\n    public void withdrawChecking(Double value) {\r\n        if (checkingBalance - value < 0)\r\n            //Throw exception;\r\n            checkingBalance = checkingBalance - value;\r\n\r\n    }\r\n\r\n    public void withdrawSaving(Double value) {\r\n        if (savingsBalance - value < 0)\r\n            //Throw exception;\r\n            savingsBalance = savingsBalance - value;\r\n\r\n    }\r\n\r\n    public int getDays(){\r\n        return (int) account.get(\"Days\");\r\n    }\r\n\r\n\r\n\r\n    public void calcInterest() {\r\n        int d = (int) account.get(\"Days\");\r\n        if (d > 30) {\r\n            //this.deposit(interestAccrued);\r\n        }\r\n    }\r\n    public double interestAccrued() {\r\n        return savingsBalance = savingsBalance * 0.015;\r\n    }\r\n\r\n\r\n\r\n    /*\r\n    int balance;\r\n\r\n    public BankAccount(int balance) {\r\n        this.balance = balance;\r\n    }\r\n\r\n    public BankAccount() {\r\n\r\n    }\r\n\r\n    public void Deposit() {\r\n\r\n    }\r\n\r\n    public void Interest() {\r\n\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return super.toString();\r\n\r\n    }\r\n\r\n     */\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CheckingAndSavingsAccount/src/BankAccount.java b/CheckingAndSavingsAccount/src/BankAccount.java
+--- a/CheckingAndSavingsAccount/src/BankAccount.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/CheckingAndSavingsAccount/src/BankAccount.java	(date 1656871848643)
+@@ -1,3 +1,5 @@
++package CheckingAndSavingsAccount.src;
++
+ import java.util.*;
+ public class BankAccount {
+ 
+Index: CheckingAndSavingsAccount/src/Checking.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Checking extends BankAccount {\r\n\r\n    double balance;\r\n\r\n    public Checking() {\r\n        super();\r\n\r\n    }\r\n\r\n    public double deposit(double addBalance) {\r\n        return balance += addBalance;\r\n    }\r\n\r\n    public double withdraw(double subBalance) {\r\n        return balance -= subBalance;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CheckingAndSavingsAccount/src/Checking.java b/CheckingAndSavingsAccount/src/Checking.java
+--- a/CheckingAndSavingsAccount/src/Checking.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/CheckingAndSavingsAccount/src/Checking.java	(date 1656871848628)
+@@ -1,3 +1,5 @@
++package CheckingAndSavingsAccount.src;
++
+ public class Checking extends BankAccount {
+ 
+     double balance;
+Index: CheckingAndSavingsAccount/src/BankApp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\nimport java.text.SimpleDateFormat;\r\nimport java.util.Date;\r\nimport java.util.HashMap;\r\nimport java.util.Random;\r\n\r\npublic class BankApp extends JFrame {\r\n\r\n    private final JPanel cards;\r\n    // ImageIcon added 25Jun22, JH\r\n    ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource(\"Money.png\"));\r\n    // random number generation for account balance\r\n    // added 25Jun22, JH\r\n    Double min = 100.00;\r\n    Double max = 10000.00;\r\n    double randoDouble = (Math.random() * ((max - min) + 1)) + min;\r\n    double roundDouble = Math.round(randoDouble * 100.0) / 100.0;\r\n    // random number generation for savings account balance\r\n    // added 25Jun22, JH\r\n    Double min2 = 2500.00;\r\n    Double max2 = 100000.00;\r\n    double randoDouble2 = (Math.random() * ((max2 - min2) + 1)) + min2;\r\n    double roundDouble2 = Math.round(randoDouble2 * 100.0) / 100.0;\r\n    // random number generation for days since last login\r\n    // added 25Jun22, JH\r\n    private static final Random rando = new Random();\r\n    private static final int MAX = 730;\r\n    private static final int MIN = 31;\r\n    Integer randoInt = rando.nextInt((MAX-MIN)+1)+MIN;\r\n\r\n\r\n    // Admin creds input for Login Creds -- Added 26June\r\n    private static final String USERNAME = \"Username\";\r\n    private static final String PASSWORD = \"Password\";\r\n\r\n    HashMap<String, String> loginCreds = new HashMap<>();\r\n    public BankApp(){\r\n        JFrame frame = new JFrame();\r\n\r\n        // Add USERNAME and PASSWORD to login creds hashmap -- Added 26June\r\n        loginCreds.put(USERNAME, PASSWORD);\r\n\r\n        JPanel p1 = loginScreen();\r\n        p1.setBackground(Color.orange);\r\n        JPanel p2 = checkingScreen();\r\n        p2.setBackground(Color.orange);\r\n        JPanel p3 = savingsScreen();\r\n        p3.setBackground(Color.orange);\r\n\r\n        // create the panel that contains the \"cards\"\r\n        cards = new JPanel(new CardLayout());\r\n        cards.add(p1, \"Panel 1\");\r\n        cards.add(p2, \"Panel 2\");\r\n        cards.add(p3, \"Panel 3\");\r\n\r\n        // add your card container to the frame\r\n        Container pane = frame.getContentPane();\r\n        pane.add(cards, BorderLayout.CENTER);\r\n\r\n        frame.setTitle(\"SJC Credit Union\");\r\n        frame.setIconImage(icon.getImage());\r\n        frame.setLocation(new Point(500,300));\r\n        frame.setResizable(false);\r\n        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        frame.setSize(800, 400);\r\n        frame.setVisible(true);\r\n    }\r\n\r\n    // loginScreen GUI\r\n    public JPanel loginScreen(){\r\n\r\n        JPanel panel = new JPanel();\r\n        panel.setLayout(null);\r\n\r\n        // JLabels for loginScreen\r\n        // added 25Jun22, JH\r\n        JLabel welcomeLabel = new JLabel(\"Welcome To SJC Credit Union\");\r\n        welcomeLabel.setBounds(20, 5, 800, 50);\r\n        welcomeLabel.setFont(new Font(\"Monaco\", Font.BOLD, 50));\r\n        panel.add(welcomeLabel);\r\n\r\n        // Message Label to depict login failure -- Added 26June\r\n        JLabel messageLabel = new JLabel(\"Welcome. Input your Login Credentials Please.\");\r\n        messageLabel.setBounds(260, 75, 360, 20);\r\n        messageLabel.setFont(new Font(\"Arial\", Font.PLAIN, 15));\r\n        panel.add(messageLabel);\r\n\r\n        JLabel userLabel = new JLabel(\"Username\");\r\n        userLabel.setBounds(290, 100, 100, 20);\r\n        userLabel.setFont(new Font(\"Monaco\",Font.BOLD, 15));\r\n        panel.add(userLabel);\r\n\r\n        JLabel passLabel = new JLabel(\"Password\");\r\n        passLabel.setBounds(290, 160, 100, 20);\r\n        passLabel.setFont(new Font(\"Monaco\",Font.BOLD, 15));\r\n        panel.add(passLabel);\r\n\r\n        // JFields for loginScreen\r\n        JTextField userText = new JTextField(20);\r\n        userText.setBounds(290,125,200, 25);\r\n        panel.add(userText);\r\n\r\n        JPasswordField passText = new JPasswordField();\r\n        passText.setBounds(290,185,200,25);\r\n        panel.add(passText);\r\n\r\n        // JButtons for loginScreen\r\n        JButton loginButton = new JButton(\"Login\");\r\n        loginButton.setBounds(340,225,90,25);\r\n        loginButton.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        loginButton.setForeground(Color.WHITE);\r\n        loginButton.setBackground((Color.BLACK));\r\n        panel.add(loginButton);\r\n\r\n\r\n        // ActionListeners for loginScreen\r\n        loginButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n\r\n                // Various Algorithm tests to check for incorrect or correctly entered login credentials -- Added 26June\r\n                // Commented code left in temporarily; also see checkLoginCreds() below\r\n                String usern = userText.getText();\r\n                String passw = String.valueOf(passText.getPassword());\r\n\r\n                if((!loginCreds.containsKey(usern)) || (!loginCreds.get(usern).equals(passw))) {\r\n                    try {\r\n                        throw new UnauthorizedLoginException(\"Invalid login credentials entered. Please try again.\");\r\n                    } catch (Exception ex) {\r\n                        System.out.println(\"An error occurred: \" + ex);\r\n                    }\r\n                    messageLabel.setText(\"Invalid login credentials entered. Please try again.\");\r\n                }\r\n                if(loginCreds.containsKey(usern)) {\r\n                    if(loginCreds.get(usern).equals(passw)) {\r\n                        CardLayout cl = (CardLayout)(cards.getLayout());\r\n                        cl.next(cards);\r\n                    }\r\n//                    else {\r\n//                        messageLabel.setText(\"Invalid login credentials entered. Please try again.\");\r\n//                    }\r\n//                } else {\r\n//                    messageLabel.setText(\"Invalid login credentials entered. Please try again.\");\r\n                }\r\n\r\n//                if((usern != \"Username\") || (passw != \"Password\")) {\r\n\r\n////                    try {\r\n////                        throw new UnauthorizedLoginException(\"Invalid login credentials entered. Please try again.\");\r\n////                    } catch (Exception ex) {\r\n////                        System.out.println(\"An error occurred: \" + ex);\r\n////                    }\r\n\r\n//                    System.out.println(\"Invalid login credentials entered. Please try again.\");\r\n//                } else {\r\n//                    CardLayout cl = (CardLayout)(cards.getLayout());\r\n//                    cl.next(cards);\r\n//                }\r\n\r\n//                try {\r\n//                    checkLoginCreds(usern, passw);\r\n//                    CardLayout cl = (CardLayout)(cards.getLayout());\r\n//                    cl.next(cards);\r\n//                } catch (Exception ex) {\r\n//                    System.out.println(\"An error occurred\" + ex);\r\n//                }\r\n\r\n            }\r\n        });\r\n        return panel;\r\n    }\r\n\r\n    // Test function for throwing new UnauthorizedLoginException -- 26June\r\n//    static void checkLoginCreds(String usern, String passw) throws UnauthorizedLoginException {\r\n//        if((usern != USERNAME) || (passw != PASSWORD)) {\r\n//            throw new UnauthorizedLoginException(\"Invalid login credentials entered. Please try again.\");\r\n//        }\r\n//    }\r\n\r\n    // checkingScreen GUI\r\n    public JPanel checkingScreen() {\r\n        JPanel panel = new JPanel();\r\n        panel.setLayout(null);\r\n\r\n        /*Enter your GUI code here for the checking account.\r\n          Make sure to add components to panel using panel.add(component)\r\n          All components must have the component.setBounds(x position, y position, width, height);\r\n        * */\r\n\r\n        // JLabels for checkingScreen\r\n        // added 26Jun22, JH\r\n        Date date = new Date();\r\n        new SimpleDateFormat();\r\n        JLabel dTG = new JLabel(\"Today is \" + date);\r\n        dTG.setBounds(260, 315, 300, 20);\r\n        dTG.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(dTG);\r\n\r\n        // added 26Jun22, JH\r\n        JLabel lastLog = new JLabel(\"Your last login was \" + randoInt + \" days ago\");\r\n        lastLog.setBounds(260, 340, 300, 20);\r\n        lastLog.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(lastLog);\r\n\r\n        // added 26Jun22, JH\r\n        JLabel accountLabel = new JLabel(\"Checking Account\");\r\n        accountLabel.setBounds(20, 5, 800, 60);\r\n        accountLabel.setFont(new Font(\"Monaco\", Font.BOLD, 50));\r\n        panel.add(accountLabel);\r\n\r\n        // added 26Jun22, JH\r\n        JLabel currentBalance = new JLabel(\"Balance: $\"+roundDouble);\r\n        currentBalance.setBounds(435, 85, 350, 40);\r\n        currentBalance.setFont(new Font(\"Monaco\", Font.BOLD, 25));\r\n        panel.add(currentBalance);\r\n\r\n        // added 26Jun22, JH\r\n        JLabel transactionType = new JLabel(\"Please choose a transaction type\");\r\n        transactionType.setBounds(20, 90, 250, 20);\r\n        transactionType.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(transactionType);\r\n\r\n        // added 26Jun22, JH\r\n        JLabel transactionAmount = new JLabel(\"Enter your transaction amount\");\r\n        transactionAmount.setBounds(20, 200, 250, 20);\r\n        transactionAmount.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(transactionAmount);\r\n\r\n        // JTextFields for checkingScreen\r\n        // added 26Jun22, JH\r\n        JTextField transactionInput = new JTextField(\"$\");\r\n        transactionInput.setBounds(20, 230, 230, 40);\r\n        transactionInput.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(transactionInput);\r\n\r\n        // JComboBox for checkingScreen\r\n        // added 26Jun22, JH\r\n        String[] transactions1 = {\"Deposit\",\"Withdraw\"};\r\n        JComboBox jCB = new JComboBox(transactions1);\r\n        jCB.setBounds(20,120,100,20);\r\n        jCB.setRenderer(new DefaultListCellRenderer() {\r\n            public void paint(Graphics g) {\r\n                setBackground(Color.green);\r\n                setForeground(Color.black);\r\n                super.paint(g);\r\n            }\r\n        });\r\n        panel.add(jCB);\r\n\r\n        //JButtons for checkingScreen\r\n        // added 27Jun22, JH\r\n        JButton submitButton = new JButton(\"Submit\");\r\n        submitButton.setBounds(270, 230, 100, 40);\r\n        submitButton.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        submitButton.setForeground(Color.WHITE);\r\n        submitButton.setBackground((Color.BLACK));\r\n        panel.add(submitButton);\r\n\r\n        // added 27Jun22, JH\r\n        JButton goToButton = new JButton(\"Go To Savings\");\r\n        goToButton.setBounds(20,320,130,25);\r\n        goToButton.setFont(new Font(\"Monaco\", Font.BOLD, 12));\r\n        goToButton.setForeground(Color.WHITE);\r\n        goToButton.setBackground((Color.BLACK));\r\n        panel.add(goToButton);\r\n\r\n        // added 27Jun22, JH\r\n        JButton logoutButton = new JButton(\"Logout\");\r\n        logoutButton.setBounds(650,320,120,25);\r\n        logoutButton.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        logoutButton.setForeground(Color.WHITE);\r\n        logoutButton.setBackground((Color.BLACK));\r\n        panel.add(logoutButton);\r\n\r\n        // actionListeners for checkingScreen\r\n        submitButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n\r\n            }\r\n        });\r\n\r\n        goToButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                CardLayout cl = (CardLayout)(cards.getLayout());\r\n                cl.show(cards, \"Panel 3\");\r\n            }\r\n        });\r\n\r\n        //return panel;\r\n\r\n        logoutButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                CardLayout cl = (CardLayout)(cards.getLayout());\r\n                cl.show(cards, \"Panel 1\");\r\n            }\r\n        });\r\n        return panel;\r\n    }\r\n\r\n    // savingsScreen GUI\r\n    public JPanel savingsScreen(){\r\n        JPanel panel = new JPanel();\r\n        panel.setLayout(null);\r\n\r\n        /*Enter your GUI code here for the checking account.\r\n          Make sure to add components to panel using panel.add(component)\r\n          All components must have the component.setBounds(x position, y position, width, height);\r\n        * */\r\n\r\n        // JLabels for savingsScreen\r\n        // added 27Jun22, JH\r\n        Date date = new Date();\r\n        new SimpleDateFormat();\r\n        JLabel dTG = new JLabel(\"Today is \" + date);\r\n        dTG.setBounds(260, 315, 300, 20);\r\n        dTG.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(dTG);\r\n\r\n        // added 27Jun22, JH\r\n        JLabel lastLog = new JLabel(\"Your last login was \" + randoInt + \" days ago\");\r\n        lastLog.setBounds(260, 340, 300, 20);\r\n        lastLog.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(lastLog);\r\n\r\n        // added 27Jun22, JH\r\n        JLabel accountLabel = new JLabel(\"Savings Account\");\r\n        accountLabel.setBounds(20, 5, 800, 60);\r\n        accountLabel.setFont(new Font(\"Monaco\", Font.BOLD, 50));\r\n        panel.add(accountLabel);\r\n\r\n        // added 27Jun22, JH\r\n        JLabel currentBalance = new JLabel(\"Balance: $\"+roundDouble2);\r\n        currentBalance.setBounds(435, 85, 350, 40);\r\n        currentBalance.setFont(new Font(\"Monaco\", Font.BOLD, 25));\r\n        panel.add(currentBalance);\r\n\r\n        // added 27Jun22, JH\r\n        JLabel transactionType = new JLabel(\"Please choose a transaction type\");\r\n        transactionType.setBounds(20, 90, 250, 20);\r\n        transactionType.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(transactionType);\r\n\r\n        // added 27Jun22, JH\r\n        JLabel transactionAmount = new JLabel(\"Enter your transaction amount\");\r\n        transactionAmount.setBounds(20, 200, 250, 20);\r\n        transactionAmount.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(transactionAmount);\r\n\r\n        // added 27Jun22, JH\r\n        JLabel interestAccrued = new JLabel(\"Interest accrued since last login $TBD\");\r\n        interestAccrued.setBounds(435, 120, 350, 20);\r\n        interestAccrued.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(interestAccrued);\r\n\r\n        // JTextFields for savingsScreen\r\n        // added 27Jun22, JH\r\n        JTextField transactionInput = new JTextField(\"$\");\r\n        transactionInput.setBounds(20, 230, 230, 40);\r\n        transactionInput.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        panel.add(transactionInput);\r\n\r\n        // JComboBox for savingsScreen\r\n        // added 27Jun22, JH\r\n        String[] transactions1 = {\"Deposit\",\"Withdraw\"};\r\n        JComboBox jCB = new JComboBox(transactions1);\r\n        jCB.setBounds(20,120,100,20);\r\n        jCB.setRenderer(new DefaultListCellRenderer() {\r\n            public void paint(Graphics g) {\r\n                setBackground(Color.green);\r\n                setForeground(Color.black);\r\n                super.paint(g);\r\n            }\r\n        });\r\n        panel.add(jCB);\r\n\r\n        //JButtons for savingsScreen\r\n        // added 27Jun22, JH\r\n        JButton submitButton = new JButton(\"Submit\");\r\n        submitButton.setBounds(270, 230, 100, 40);\r\n        submitButton.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        submitButton.setForeground(Color.WHITE);\r\n        submitButton.setBackground((Color.BLACK));\r\n        panel.add(submitButton);\r\n\r\n        // added 27Jun22, JH\r\n        JButton goToButton = new JButton(\"Go To Checking\");\r\n        goToButton.setBounds(20,320,130,25);\r\n        goToButton.setFont(new Font(\"Monaco\", Font.BOLD, 12));\r\n        goToButton.setForeground(Color.WHITE);\r\n        goToButton.setBackground((Color.BLACK));\r\n        panel.add(goToButton);\r\n\r\n        // added 27Jun22, JH\r\n        JButton logoutButton = new JButton(\"Logout\");\r\n        logoutButton.setBounds(650,320,120,25);\r\n        logoutButton.setFont(new Font(\"Monaco\", Font.BOLD, 15));\r\n        logoutButton.setForeground(Color.WHITE);\r\n        logoutButton.setBackground((Color.BLACK));\r\n        panel.add(logoutButton);\r\n\r\n        // actionListeners for savingsScreen\r\n        submitButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n\r\n            }\r\n        });\r\n\r\n        goToButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                CardLayout cl = (CardLayout)(cards.getLayout());\r\n                cl.show(cards, \"Panel 2\");\r\n            }\r\n        });\r\n\r\n        logoutButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                CardLayout cl = (CardLayout)(cards.getLayout());\r\n                cl.show(cards, \"Panel 1\");\r\n            }\r\n        });\r\n        return panel;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CheckingAndSavingsAccount/src/BankApp.java b/CheckingAndSavingsAccount/src/BankApp.java
+--- a/CheckingAndSavingsAccount/src/BankApp.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/CheckingAndSavingsAccount/src/BankApp.java	(date 1656872196652)
+@@ -1,3 +1,5 @@
++package CheckingAndSavingsAccount.src;
++
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.ActionEvent;
+@@ -11,7 +13,7 @@
+ 
+     private final JPanel cards;
+     // ImageIcon added 25Jun22, JH
+-    ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("Money.png"));
++    //ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("Money.png"));
+     // random number generation for account balance
+     // added 25Jun22, JH
+     Double min = 100.00;
+@@ -61,7 +63,7 @@
+         pane.add(cards, BorderLayout.CENTER);
+ 
+         frame.setTitle("SJC Credit Union");
+-        frame.setIconImage(icon.getImage());
++        //frame.setIconImage(icon.getImage());
+         frame.setLocation(new Point(500,300));
+         frame.setResizable(false);
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+Index: PseudoBankingApp/.idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/PseudoBankingApp/.idea/modules.xml b/.idea/modules.xml
+rename from PseudoBankingApp/.idea/modules.xml
+rename to .idea/modules.xml
+--- a/PseudoBankingApp/.idea/modules.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/.idea/modules.xml	(date 1656871389699)
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/PseudoBankingApp.iml" filepath="$PROJECT_DIR$/PseudoBankingApp.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/CMSC-495-Group-2.iml" filepath="$PROJECT_DIR$/.idea/CMSC-495-Group-2.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: CheckingAndSavingsAccount/src/UnauthorizedLoginException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n// Exception to throw message if incorrect login credentials are entered in Login GUI -- Added 26June\r\n// Exception is handled in BankApp.java\r\npublic class UnauthorizedLoginException extends Exception {\r\n\r\n    public UnauthorizedLoginException(String message) {\r\n        super(message);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CheckingAndSavingsAccount/src/UnauthorizedLoginException.java b/CheckingAndSavingsAccount/src/UnauthorizedLoginException.java
+--- a/CheckingAndSavingsAccount/src/UnauthorizedLoginException.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/CheckingAndSavingsAccount/src/UnauthorizedLoginException.java	(date 1656871848664)
+@@ -1,3 +1,4 @@
++package CheckingAndSavingsAccount.src;
+ 
+ // Exception to throw message if incorrect login credentials are entered in Login GUI -- Added 26June
+ // Exception is handled in BankApp.java
+Index: PseudoBankingApp/.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/PseudoBankingApp/.idea/vcs.xml b/.idea/vcs.xml
+rename from PseudoBankingApp/.idea/vcs.xml
+rename to .idea/vcs.xml
+--- a/PseudoBankingApp/.idea/vcs.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/.idea/vcs.xml	(date 1656871389709)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/CMSC-495-Group-2.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/CheckingAndSavingsAccount/src\" isTestSource=\"false\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/CMSC-495-Group-2.iml b/.idea/CMSC-495-Group-2.iml
+--- a/.idea/CMSC-495-Group-2.iml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/.idea/CMSC-495-Group-2.iml	(date 1656871389653)
+@@ -3,7 +3,7 @@
+   <component name="NewModuleRootManager" inherit-compiler-output="true">
+     <exclude-output />
+     <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/CheckingAndSavingsAccount/src" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+Index: CheckingAndSavingsAccount/src/Savings.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Savings extends BankAccount {\r\n\r\n    double balance;\r\n    final double interest = 0.015;\r\n\r\n    public Savings() {\r\n        super();\r\n\r\n    }\r\n\r\n    public double deposit(double addBalance) {\r\n        return balance += addBalance;\r\n    }\r\n\r\n    public double withdraw(double subBalance) {\r\n        return balance -= subBalance;\r\n    }\r\n\r\n    public double accrueInterest() {\r\n        return balance = balance * interest;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CheckingAndSavingsAccount/src/Savings.java b/CheckingAndSavingsAccount/src/Savings.java
+--- a/CheckingAndSavingsAccount/src/Savings.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/CheckingAndSavingsAccount/src/Savings.java	(date 1656871848622)
+@@ -1,3 +1,5 @@
++package CheckingAndSavingsAccount.src;
++
+ public class Savings extends BankAccount {
+ 
+     double balance;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4ff3ed91-5a24-4811-a90c-e0b437546562\" name=\"Changes\" comment=\"IntelliJ Test: Commit and Push with my BankAccount shell (delete)\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/CheckingAndSavingsAccount/src/BankApp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/CheckingAndSavingsAccount/src/BankApp.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankAccount.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$1.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$2.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$3.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$4.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$5.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$6.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$7.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$8.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$9.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/Checking.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/Main.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/NotValidAmountException.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/CMSC-495-Group-2/Savings.class\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"d3ed7649-2fa7-410d-bf04-a847fa5f4043\" />\r\n        <option name=\"url\" value=\"https://github.com/LiquidBurrito/CMSC-495-Group-2.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"29x6BKg8btjwXzdWTHOYaPS67wB\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/Users/Casey/Desktop/Programming/Java/GitHub/CMSC495/NEWSJCBankingApp/CMSC-495-Group-2/PseudoBankingApp&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [\r\n      &quot;Markdown&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Users\\Casey\\Desktop\\Programming\\Java\\GitHub\\CMSC495\\CMSC495Test\\CMSC-495-Group-2\\Casey-Test\\BankAccount\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Users\\Casey\\Desktop\\Programming\\Java\\GitHub\\CMSC495\\CMSC495Test\\CMSC-495-Group-2\\Casey-Test\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"CMSC-495-Group-2\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4ff3ed91-5a24-4811-a90c-e0b437546562\" name=\"Changes\" comment=\"\" />\r\n      <created>1654042255110</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1654042255110</updated>\r\n      <workItem from=\"1654042257311\" duration=\"1007000\" />\r\n      <workItem from=\"1654207470386\" duration=\"48000\" />\r\n      <workItem from=\"1654968284550\" duration=\"405000\" />\r\n      <workItem from=\"1654968783862\" duration=\"770000\" />\r\n      <workItem from=\"1655053171296\" duration=\"70000\" />\r\n      <workItem from=\"1655053345533\" duration=\"127000\" />\r\n      <workItem from=\"1655053730249\" duration=\"49000\" />\r\n      <workItem from=\"1655053794761\" duration=\"57000\" />\r\n      <workItem from=\"1656028155093\" duration=\"33000\" />\r\n      <workItem from=\"1656466920864\" duration=\"80000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"IntelliJ Test: Commit and Push with Scratch (delete)\">\r\n      <created>1654042671314</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1654042671314</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"IntelliJ Test: Commit and Push with Scratch (delete)\">\r\n      <created>1654042965573</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1654042965573</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"IntelliJ Test: Commit and Push with my BankAccount shell (delete)\">\r\n      <created>1654968417526</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1654968417526</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"IntelliJ Test: Commit and Push with Scratch (delete)\" />\r\n    <MESSAGE value=\"IntelliJ Test: Commit and Push with my BankAccount shell (delete)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"IntelliJ Test: Commit and Push with my BankAccount shell (delete)\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/.idea/workspace.xml	(date 1656872339376)
+@@ -5,23 +5,39 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="4ff3ed91-5a24-4811-a90c-e0b437546562" name="Changes" comment="IntelliJ Test: Commit and Push with my BankAccount shell (delete)">
++      <change beforePath="$PROJECT_DIR$/.idea/CMSC-495-Group-2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CMSC-495-Group-2.iml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Casey-Test/.idea/Casey-Test.iml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Casey-Test/.idea/misc.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Casey-Test/.idea/modules.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Casey-Test/.idea/vcs.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/out/production/CheckingAndSavingsAccount/BankAccount.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/out/production/CheckingAndSavingsAccount/LoginGui.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/out/production/CheckingAndSavingsAccount/Main.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/out/production/CheckingAndSavingsAccount/NotValidAmountException.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/out/production/CheckingAndSavingsAccount/Savings.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/BankAccount.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/BankApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/BankApp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankAccount.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$1.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$2.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$3.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$4.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$5.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$6.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$7.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$8.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp$9.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/BankApp.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/Checking.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/Main.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/NotValidAmountException.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/Savings.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/Checking.java" beforeDir="false" afterPath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/Checking.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/NotValidAmountException.java" beforeDir="false" afterPath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/NotValidAmountException.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/Savings.java" beforeDir="false" afterPath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/Savings.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/UnauthorizedLoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/CheckingAndSavingsAccount/src/UnauthorizedLoginException.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/.idea/.gitignore" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/.idea/misc.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/.idea/workspace.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/PseudoBankingApp.iml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/BankAccount.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/BankGui.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/Checking.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/LoginException.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/Main.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/OverdraftException.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/Savings.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/PseudoBankingApp/src/User.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/CMSC-495-Group-2/Money.png" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -48,21 +64,26 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;D:/Users/Casey/Desktop/Programming/Java/GitHub/CMSC495/NEWSJCBankingApp/CMSC-495-Group-2/PseudoBankingApp&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "D:/Users/Casey/Desktop/Programming/Java/GitHub/CMSC495/NEWSJCBankingApp/CMSC-495-Group-2/PseudoBankingApp",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0"
+   },
+-  &quot;keyToStringList&quot;: {
+-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+-      &quot;Markdown&quot;
++  "keyToStringList": {
++    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
++      "Markdown"
+     ]
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\Users\Casey\Desktop\Programming\Java\GitHub\CMSC495\CMSC495Test\CMSC-495-Group-2\Casey-Test\BankAccount" />
+@@ -71,7 +92,20 @@
+       <recent name="D:\Users\Casey\Desktop\Programming\Java\GitHub\CMSC495\CMSC495Test\CMSC-495-Group-2\Casey-Test" />
+     </key>
+   </component>
+-  <component name="RunManager">
++  <component name="RunManager" selected="Application.CheckingAndSavingsAccount.src.Main">
++    <configuration name="CheckingAndSavingsAccount.src.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="CheckingAndSavingsAccount.src.Main" />
++      <module name="CMSC-495-Group-2" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="CheckingAndSavingsAccount.src.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="Main" />
+       <module name="CMSC-495-Group-2" />
+@@ -81,6 +115,7 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.CheckingAndSavingsAccount.src.Main" />
+         <item itemvalue="Application.Main" />
+       </list>
+     </recent_temporary>
+@@ -103,6 +138,7 @@
+       <workItem from="1655053794761" duration="57000" />
+       <workItem from="1656028155093" duration="33000" />
+       <workItem from="1656466920864" duration="80000" />
++      <workItem from="1656871354791" duration="978000" />
+     </task>
+     <task id="LOCAL-00001" summary="IntelliJ Test: Commit and Push with Scratch (delete)">
+       <created>1654042671314</created>
+Index: CheckingAndSavingsAccount/src/NotValidAmountException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.IOException;\r\n\r\npublic class NotValidAmountException extends Exception {\r\n\r\n    NotValidAmountException(String message) {\r\n        super(message);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CheckingAndSavingsAccount/src/NotValidAmountException.java b/CheckingAndSavingsAccount/src/NotValidAmountException.java
+--- a/CheckingAndSavingsAccount/src/NotValidAmountException.java	(revision cf94761eb559ee84c2a485630662a61eb186b797)
++++ b/CheckingAndSavingsAccount/src/NotValidAmountException.java	(date 1656871848649)
+@@ -1,3 +1,5 @@
++package CheckingAndSavingsAccount.src;
++
+ import java.io.IOException;
+ 
+ public class NotValidAmountException extends Exception {
