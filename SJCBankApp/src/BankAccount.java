@@ -14,16 +14,13 @@ public class BankAccount {
         account.put("Savings", savingsBalance);
         account.put("Days", dayz);
     }
-
     public boolean checkUser(String usrnm){
         String s = (String) account.get("Username");
         return s.equalsIgnoreCase(usrnm);
     }
-
     public boolean checkPass(String pass){
         return account.get("Password").equals(pass);
     }
-
 
     public double getChecking(){
         return checkingBalance;
@@ -68,35 +65,8 @@ public class BankAccount {
         }
     }
     public double interestAccrued() {
+
         return savingsBalance = savingsBalance * 0.015;
     }
 
-
-
-    /*
-    int balance;
-
-    public BankAccount(int balance) {
-        this.balance = balance;
-    }
-
-    public BankAccount() {
-
-    }
-
-    public void Deposit() {
-
-    }
-
-    public void Interest() {
-
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-
-    }
-
-     */
 }
