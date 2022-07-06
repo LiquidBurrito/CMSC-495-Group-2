@@ -79,12 +79,23 @@ public class BankApp extends JFrame {
             return cinterest;
     }
 
+    private static JLabel lastLog;
+    private static JLabel lastLog2;
+
     public BankApp() {
 
         daysCounter = 0;
         intAccrued = 0;
         loginTimes = 0;
         JFrame frame = new JFrame();
+
+        lastLog = new JLabel("Your last login was " + randoInt + " days ago");
+        lastLog.setBounds(260, 340, 300, 20);
+        lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
+
+        lastLog2 = new JLabel("Your last login was " + randoInt + " days ago");
+        lastLog2.setBounds(260, 340, 300, 20);
+        lastLog2.setFont(new Font("Monaco", Font.BOLD, 15));
 
         // Add USERNAME and PASSWORD to login creds hashmap -- added 26June, CO
         loginCreds.put(USERNAME, PASSWORD);
@@ -216,9 +227,12 @@ public class BankApp extends JFrame {
         panel.add(dTG);
 
         // added 26Jun22, JH
-        JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
+
+        /*JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
         lastLog.setBounds(260, 340, 300, 20);
         lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
+
+         */
         panel.add(lastLog);
 
         // added 26Jun22, JH
@@ -380,6 +394,7 @@ public class BankApp extends JFrame {
             loginTimes++;
             randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
             lastLog.setText("Your last login was " + randoInt + " days ago");
+            lastLog2.setText("Your last login was " + randoInt + " days ago");
             calculateInterest();
 
         });
@@ -406,10 +421,12 @@ public class BankApp extends JFrame {
         panel.add(dTG);
 
         // added 27Jun22, JH
-        JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
+        /* lastLog = new JLabel("Your last login was " + randoInt + " days ago");
         lastLog.setBounds(260, 340, 300, 20);
         lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(lastLog);
+
+         */
+        panel.add(lastLog2);
 
         // added 27Jun22, JH
         JLabel accountLabel2 = new JLabel("Savings Account");
@@ -580,6 +597,7 @@ public class BankApp extends JFrame {
             randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
             calculateInterest();
             lastLog.setText("Your last login was " + randoInt + " days ago");
+            lastLog2.setText("Your last login was " + randoInt + " days ago");
             currentBalance2.setText("Balance: $"+df.format(roundDouble2));
         });
         return panel;
