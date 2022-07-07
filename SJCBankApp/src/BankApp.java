@@ -12,17 +12,23 @@ import java.util.Random;
 public class BankApp extends JFrame {
 
     private final JPanel cards;
+
+    private JPanel p1, p2, p3;
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     // added decimal formatter 02JUL22, JH
     DecimalFormat formatter = new DecimalFormat("0.00");
     // ImageIcon added 25Jun22, JH
     // updated pathing for ImageIcon 03JUL22, JH
     ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("Money.png"));
 
+    int daysCounter;
+
     // random number generation for checking account balance
     // added 25Jun22, JH
     // updated formatting 03JUL22, JH
     double min = 100.00;
-    Double max = 10000.00;
+    Double max = 1000.00;
     double randoDouble1 = (Math.random() * ((max - min) + 1)) + min;
     double roundDouble1 = Double.parseDouble(formatter.format(Math.round(randoDouble1 * 100.0) / 100.0));
 
@@ -30,15 +36,15 @@ public class BankApp extends JFrame {
     // added 25Jun22, JH
     // updated formatting 03JUL22, JH
     Double min2 = 2500.00;
-    Double max2 = 100000.00;
+    Double max2 = 10000.00;
     double randoDouble2 = (Math.random() * ((max2 - min2) + 1)) + min2;
     double roundDouble2 = Double.parseDouble(formatter.format(Math.round(randoDouble2 * 100.0) / 100.0));
 
     // random number generation for days since last login
     // added 25Jun22, JH
     private static final Random rando = new Random();
-    private static final int MAX = 730;
-    private static final int MIN = 31;
+    private static final int MAX = 90;
+    private static final int MIN = 30;
     Integer randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
 
     // Admin creds input for Login Creds -- added 26June, CO
@@ -47,17 +53,58 @@ public class BankApp extends JFrame {
     private static final String PASSWORD = "Password";
 
     HashMap<String, String> loginCreds = new HashMap<>();
+
+    private double intAccrued;
+    private int loginTimes;
+    private int compoundTimes(){
+        return daysCounter/30;
+    }
+    private int remainingDays(){
+        return daysCounter % 30;
+    }
+    private void calculateInterest (){
+        //add random days to current days count
+        daysCounter += randoInt;
+        //calculates interest accrued based on daysCounter
+        intAccrued =  calculateHelper(roundDouble2,compoundTimes(),0.015, 12);
+        //adds interest accrued to savings balance
+        roundDouble2 += intAccrued;
+        //updates daysCounter to remaining days after last compound
+        daysCounter = remainingDays();
+    }
+
+    private double calculateHelper(double p, int t, double r, int n) {
+            double amount = p * Math.pow(1 + (r / n), n * t);
+            double cinterest = amount - p;
+            return cinterest;
+    }
+
+    private static JLabel lastLog;
+    private static JLabel lastLog2;
+
     public BankApp() {
+
+        daysCounter = 0;
+        intAccrued = 0;
+        loginTimes = 0;
         JFrame frame = new JFrame();
+
+        lastLog = new JLabel("Your last login was " + randoInt + " days ago");
+        lastLog.setBounds(260, 340, 300, 20);
+        lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
+
+        lastLog2 = new JLabel("Your last login was " + randoInt + " days ago");
+        lastLog2.setBounds(260, 340, 300, 20);
+        lastLog2.setFont(new Font("Monaco", Font.BOLD, 15));
 
         // Add USERNAME and PASSWORD to login creds hashmap -- added 26June, CO
         loginCreds.put(USERNAME, PASSWORD);
 
-        JPanel p1 = loginScreen();
+        p1 = loginScreen();
         p1.setBackground(Color.orange);
-        JPanel p2 = checkingScreen();
+        p2 = checkingScreen();
         p2.setBackground(Color.orange);
-        JPanel p3 = savingsScreen();
+        p3 = savingsScreen();
         p3.setBackground(Color.orange);
 
         // create the panel that contains the "cards"
@@ -180,9 +227,12 @@ public class BankApp extends JFrame {
         panel.add(dTG);
 
         // added 26Jun22, JH
-        JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
+
+        /*JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
         lastLog.setBounds(260, 340, 300, 20);
         lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
+
+         */
         panel.add(lastLog);
 
         // added 26Jun22, JH
@@ -341,6 +391,11 @@ public class BankApp extends JFrame {
         logoutButton1.addActionListener(e -> {
             CardLayout cl = (CardLayout)(cards.getLayout());
             cl.show(cards, "Panel 1");
+            loginTimes++;
+            randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
+            lastLog.setText("Your last login was " + randoInt + " days ago");
+            lastLog2.setText("Your last login was " + randoInt + " days ago");
+            calculateInterest();
 
         });
         return panel;
@@ -366,10 +421,12 @@ public class BankApp extends JFrame {
         panel.add(dTG);
 
         // added 27Jun22, JH
-        JLabel lastLog = new JLabel("Your last login was " + randoInt + " days ago");
+        /* lastLog = new JLabel("Your last login was " + randoInt + " days ago");
         lastLog.setBounds(260, 340, 300, 20);
         lastLog.setFont(new Font("Monaco", Font.BOLD, 15));
-        panel.add(lastLog);
+
+         */
+        panel.add(lastLog2);
 
         // added 27Jun22, JH
         JLabel accountLabel2 = new JLabel("Savings Account");
@@ -395,8 +452,13 @@ public class BankApp extends JFrame {
         transactionAmount2.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(transactionAmount2);
 
+        if(loginTimes==0){
+            calculateInterest();
+            currentBalance2.setText("Balance: $"+df.format(roundDouble2));
+        }
+
         // added 27Jun22, JH
-        JLabel interestAccrued2 = new JLabel("Interest accrued since last login $TBD");
+        JLabel interestAccrued2 = new JLabel("Interest accrued since last login: $"+ df.format(intAccrued));
         interestAccrued2.setBounds(435, 120, 350, 20);
         interestAccrued2.setFont(new Font("Monaco", Font.BOLD, 15));
         panel.add(interestAccrued2);
@@ -531,6 +593,12 @@ public class BankApp extends JFrame {
         logoutButton2.addActionListener(e -> {
             CardLayout cl = (CardLayout)(cards.getLayout());
             cl.show(cards, "Panel 1");
+            loginTimes++;
+            randoInt = rando.nextInt((MAX-MIN)+1)+MIN;
+            calculateInterest();
+            lastLog.setText("Your last login was " + randoInt + " days ago");
+            lastLog2.setText("Your last login was " + randoInt + " days ago");
+            currentBalance2.setText("Balance: $"+df.format(roundDouble2));
         });
         return panel;
     }
