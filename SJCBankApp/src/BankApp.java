@@ -364,7 +364,7 @@ public class BankApp extends JFrame {
 
                 //if-else statement and code added to withdraw amount entered,
                 // and throw error if funds are not available in account -- added/updated 05Jul22, CO
-                if(newBalance < (0 - .1)) {
+                if(newBalance < (0 - .001)) {
                     try {
                         throw new NotValidAmountException("Not enough funds in account to withdraw. Please enter a valid amount.");
                     } catch (Exception ex) {
